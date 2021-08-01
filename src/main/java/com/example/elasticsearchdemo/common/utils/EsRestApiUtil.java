@@ -16,6 +16,8 @@ import org.elasticsearch.search.builder.SearchSourceBuilder;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * 根据业务需求，封装一些ElasticSearch查询参数
+ *
  * @author tianzh
  * @date 2021年08月01日
  */
@@ -49,6 +51,7 @@ public class EsRestApiUtil {
         // 查询对象
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
         //查询包含关键词字段的文档
+        // todo 注意 这里对于 数字类型的值 是会查询报错的，支持的类型只能是text, 解决方啊参见termQuery
         QueryBuilder matchQueryBuilder = QueryBuilders.matchQuery(name, text)
                 // 启动模糊查询
                 .fuzziness(Fuzziness.AUTO)

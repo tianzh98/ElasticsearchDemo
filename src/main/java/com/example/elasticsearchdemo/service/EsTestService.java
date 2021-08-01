@@ -14,6 +14,7 @@ public interface EsTestService {
     void testEsRestUpdateApi();
     void testEsRestSelectApi();
 
+    void testEsMSearch();
 
     void testEsRestCreateIndexApi();
 }

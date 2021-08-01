@@ -1,6 +1,7 @@
 package com.example.elasticsearchdemo.service.impl;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Iterator;
@@ -12,6 +13,8 @@ import com.example.elasticsearchdemo.pojo.Person;
 import com.example.elasticsearchdemo.pojo.SeBd;
 import com.example.elasticsearchdemo.service.EsTestService;
 import org.elasticsearch.action.delete.DeleteRequest;
+import org.elasticsearch.action.search.MultiSearchRequest;
+import org.elasticsearch.action.search.MultiSearchResponse;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
@@ -116,6 +119,35 @@ public class EsTestServiceImpl implements EsTestService {
     }
 
     @Override
+    public void testEsMSearch() {
+        try {
+            MultiSearchRequest multiSearchRequest = new MultiSearchRequest();
+            multiSearchRequest.add(EsRestApiUtil.createFuzzinessSearchRequest(
+                    "name", "张三", ENEsIndex.INDEX_PERSON_ES_TEST.getValue()));
+
+
+            multiSearchRequest.add(new SearchRequest(ENEsIndex.INDEX_PERSON_ES_TEST.getValue())
+                    .source(new SearchSourceBuilder().query(QueryBuilders.termQuery("age", 20))));
+            MultiSearchResponse msearchResponse = highLevelClient.msearch(multiSearchRequest, RequestOptions.DEFAULT);
+
+            // TODO 这个方法其实是把多次查询汇总了，结果取交集才相当于多条件查询
+            msearchResponse.forEach(t->{
+                SearchResponse resp = t.getResponse();
+
+                Arrays.stream(resp.getHits().getHits())
+                        .forEach(i -> {
+                            System.out.println(i.getSourceAsString());
+                        });
+                System.out.println(resp.getHits().getTotalHits());
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
     public void testEsRestCreateIndexApi() {
 
     }
@@ -125,8 +157,8 @@ public class EsTestServiceImpl implements EsTestService {
         try {
 //            highLevelClient.indices().create()
             Person person = new Person();
-            person.setName("田梓豪");
-            person.setAge(22);
+            person.setName("张三");
+            person.setAge(20);
             person.setGender("男");
             highLevelClient.index(EsRestApiUtil.createIndexRequest(person, ENEsIndex.INDEX_PERSON_ES_TEST.getValue()),
                     RequestOptions.DEFAULT);
