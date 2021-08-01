@@ -21,6 +21,7 @@ import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.unit.Fuzziness;
 import org.elasticsearch.common.unit.TimeValue;
+import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.reindex.BulkByScrollResponse;
@@ -31,6 +32,7 @@ import org.elasticsearch.script.ScriptType;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -130,7 +132,7 @@ public class EsTestServiceImpl implements EsTestService {
                     .source(new SearchSourceBuilder().query(QueryBuilders.termQuery("age", 20))));
             MultiSearchResponse msearchResponse = highLevelClient.msearch(multiSearchRequest, RequestOptions.DEFAULT);
 
-            // TODO 这个方法其实是把多次查询汇总了，结果取交集才相当于多条件查询
+            // TODO 这个方法其实还是分词查询
             msearchResponse.forEach(t->{
                 SearchResponse resp = t.getResponse();
 
@@ -148,6 +150,40 @@ public class EsTestServiceImpl implements EsTestService {
     }
 
     @Override
+    public void testBoolQuery() {
+        try {
+            BoolQueryBuilder boolQueryBuilder =  QueryBuilders
+                    .boolQuery()
+                    .must(QueryBuilders.matchQuery("name", "张三"))
+                    .must(QueryBuilders.matchQuery("age", 20))
+                    .must(QueryBuilders.matchQuery("gender", "男"));
+            SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+
+            // 置查询的起始索引位置和数量
+            searchSourceBuilder.from(0);
+            searchSourceBuilder.size(50);
+            // 60秒超时返回
+            searchSourceBuilder.timeout(new TimeValue(60, TimeUnit.SECONDS));
+            searchSourceBuilder.query(boolQueryBuilder);
+            // sort可能会报错，类型为Text格式，然后涉及到了聚合排序等功能。没有进行优化，也类似没有加索引。没有优化的字段es默认是禁止聚合/排序操作的。所以需要将要聚合的字段添加优化
+//            searchSourceBuilder.sort("gender", SortOrder.ASC);
+            SearchRequest searchRequest = new SearchRequest(ENEsIndex.INDEX_PERSON_ES_TEST.getValue())
+                    .source(searchSourceBuilder);
+            SearchResponse searchResponse = highLevelClient.search(searchRequest, RequestOptions.DEFAULT);
+            // 获取命中次数，查询结果有多少对象
+            SearchHits hits = searchResponse.getHits();
+
+            for (SearchHit searchHit : hits) {
+                System.out.println();
+                System.out.println(searchHit.getSourceAsString());
+                System.out.println();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void testEsRestCreateIndexApi() {
 
     }
@@ -159,7 +195,7 @@ public class EsTestServiceImpl implements EsTestService {
             Person person = new Person();
             person.setName("张三");
             person.setAge(20);
-            person.setGender("男");
+            person.setGender("女");
             highLevelClient.index(EsRestApiUtil.createIndexRequest(person, ENEsIndex.INDEX_PERSON_ES_TEST.getValue()),
                     RequestOptions.DEFAULT);
 

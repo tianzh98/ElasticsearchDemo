@@ -17,4 +17,6 @@ public interface EsTestService {
     void testEsMSearch();
 
     void testEsRestCreateIndexApi();
+
+    void testBoolQuery();
 }

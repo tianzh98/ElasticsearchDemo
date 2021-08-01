@@ -25,7 +25,8 @@ public class ElasticsearchDemoApplication {
 //            esTestService.testEsRestDeleteApi();
 
 //        esTestService.testEsRestUpdateApi();
-        esTestService.testEsMSearch();
+//        esTestService.testEsMSearch();
+        esTestService.testBoolQuery();
     }
 
 }
