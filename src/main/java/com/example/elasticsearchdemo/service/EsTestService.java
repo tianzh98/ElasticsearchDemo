@@ -6,5 +6,14 @@ package com.example.elasticsearchdemo.service;
  */
 public interface EsTestService {
 
-    void testEsRestApi();
+    /**
+     * 测试 index API
+     */
+    void testEsRestIndexApi();
+    void testEsRestDeleteApi();
+    void testEsRestUpdateApi();
+    void testEsRestSelectApi();
+
+
+    void testEsRestCreateIndexApi();
 }
