@@ -2,6 +2,7 @@ package com.example.elasticsearchdemo.pojo;
 
 import lombok.Data;
 import lombok.Getter;
+import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -17,6 +18,7 @@ public class EsBasePO implements Serializable {
     /**
      * 文档的唯一id  UUID, 不当作document的一部分 不参与json转化
      */
+    @Id
     private transient String esId;
 
     /**

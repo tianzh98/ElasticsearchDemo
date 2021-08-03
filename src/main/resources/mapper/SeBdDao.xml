@@ -1,0 +1,1175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.elasticsearchdemo.dao.SeBdDao">
+
+    <resultMap type="com.example.elasticsearchdemo.pojo.SeBd" id="SeBdMap">
+        <result property="urid" column="URID" jdbcType="INTEGER"/>
+        <result property="entNum" column="ENT_NUM" jdbcType="VARCHAR"/>
+        <result property="batNo" column="BAT_NO" jdbcType="VARCHAR"/>
+        <result property="bdNo" column="BD_NO" jdbcType="VARCHAR"/>
+        <result property="entChannelCode" column="ENT_CHANNEL_CODE" jdbcType="VARCHAR"/>
+        <result property="entAccNum" column="ENT_ACC_NUM" jdbcType="VARCHAR"/>
+        <result property="cardType" column="CARD_TYPE" jdbcType="VARCHAR"/>
+        <result property="custBankCode" column="CUST_BANK_CODE" jdbcType="VARCHAR"/>
+        <result property="custAccNum" column="CUST_ACC_NUM" jdbcType="VARCHAR"/>
+        <result property="custAccName" column="CUST_ACC_NAME" jdbcType="VARCHAR"/>
+        <result property="custAreaCode" column="CUST_AREA_CODE" jdbcType="VARCHAR"/>
+        <result property="custBankLocationCode" column="CUST_BANK_LOCATION_CODE" jdbcType="VARCHAR"/>
+        <result property="custBankLocationName" column="CUST_BANK_LOCATION_NAME" jdbcType="VARCHAR"/>
+        <result property="privateFlag" column="PRIVATE_FLAG" jdbcType="VARCHAR"/>
+        <result property="amount" column="AMOUNT" jdbcType="VARCHAR"/>
+        <result property="currency" column="CURRENCY" jdbcType="VARCHAR"/>
+        <result property="protocolCode" column="PROTOCOL_CODE" jdbcType="VARCHAR"/>
+        <result property="protocolUserCode" column="PROTOCOL_USER_CODE" jdbcType="VARCHAR"/>
+        <result property="certType" column="CERT_TYPE" jdbcType="VARCHAR"/>
+        <result property="certNum" column="CERT_NUM" jdbcType="VARCHAR"/>
+        <result property="phone" column="PHONE" jdbcType="VARCHAR"/>
+        <result property="reconciliationCode" column="RECONCILIATION_CODE" jdbcType="VARCHAR"/>
+        <result property="purpose" column="PURPOSE" jdbcType="VARCHAR"/>
+        <result property="memo" column="MEMO" jdbcType="VARCHAR"/>
+        <result property="batchToSingleFlag" column="BATCH_TO_SINGLE_FLAG" jdbcType="VARCHAR"/>
+        <result property="flowNo" column="FLOW_NO" jdbcType="VARCHAR"/>
+        <result property="singleTransVerifyCode" column="SINGLE_TRANS_VERIFY_CODE" jdbcType="VARCHAR"/>
+        <result property="singleQueryVerifyCode" column="SINGLE_QUERY_VERIFY_CODE" jdbcType="VARCHAR"/>
+        <result property="sourceNote" column="SOURCE_NOTE" jdbcType="VARCHAR"/>
+        <result property="orgCode" column="ORG_CODE" jdbcType="VARCHAR"/>
+        <result property="sameBankFlag" column="SAME_BANK_FLAG" jdbcType="VARCHAR"/>
+        <result property="urgentFlag" column="URGENT_FLAG" jdbcType="VARCHAR"/>
+        <result property="sourceUrid" column="SOURCE_URID" jdbcType="VARCHAR"/>
+        <result property="warnRevoked" column="WARN_REVOKED" jdbcType="VARCHAR"/>
+        <result property="repeatConditionValue" column="REPEAT_CONDITION_VALUE" jdbcType="VARCHAR"/>
+        <result property="warnDate" column="WARN_DATE" jdbcType="VARCHAR"/>
+        <result property="detailMd5" column="DETAIL_MD5" jdbcType="VARCHAR"/>
+        <result property="bankExtend1" column="BANK_EXTEND_1" jdbcType="VARCHAR"/>
+        <result property="bankExtend2" column="BANK_EXTEND_2" jdbcType="VARCHAR"/>
+        <result property="bankExtend3" column="BANK_EXTEND_3" jdbcType="VARCHAR"/>
+        <result property="bankExtend4" column="BANK_EXTEND_4" jdbcType="VARCHAR"/>
+        <result property="bankExtend5" column="BANK_EXTEND_5" jdbcType="VARCHAR"/>
+        <result property="bankReturnState" column="BANK_RETURN_STATE" jdbcType="VARCHAR"/>
+        <result property="bankReturnCode" column="BANK_RETURN_CODE" jdbcType="VARCHAR"/>
+        <result property="bankReturnMsg" column="BANK_RETURN_MSG" jdbcType="VARCHAR"/>
+        <result property="bankLocationMatchFlag" column="BANK_LOCATION_MATCH_FLAG" jdbcType="INTEGER"/>
+        <result property="bankLocationMatchName" column="BANK_LOCATION_MATCH_NAME" jdbcType="VARCHAR"/>
+        <result property="moneyWay" column="MONEY_WAY" jdbcType="VARCHAR"/>
+        <result property="accountingDate" column="ACCOUNTING_DATE" jdbcType="VARCHAR"/>
+        <result property="fgUniqueId" column="FG_UNIQUE_ID" jdbcType="VARCHAR"/>
+        <result property="matchBankId" column="MATCH_BANK_ID" jdbcType="VARCHAR"/>
+        <result property="matchAreaCode" column="MATCH_AREA_CODE" jdbcType="VARCHAR"/>
+        <result property="bankDetailReconcile" column="BANK_DETAIL_RECONCILE" jdbcType="VARCHAR"/>
+        <result property="reconcileFileReconcile" column="RECONCILE_FILE_RECONCILE" jdbcType="VARCHAR"/>
+        <result property="totalAmountReconcile" column="TOTAL_AMOUNT_RECONCILE" jdbcType="VARCHAR"/>
+        <result property="failBankDetailReconcile" column="FAIL_BANK_DETAIL_RECONCILE" jdbcType="VARCHAR"/>
+        <result property="failAccountingDate" column="FAIL_ACCOUNTING_DATE" jdbcType="VARCHAR"/>
+        <result property="cycleDate" column="CYCLE_DATE" jdbcType="TIMESTAMP"/>
+        <result property="failCycleDate" column="FAIL_CYCLE_DATE" jdbcType="TIMESTAMP"/>
+        <result property="supportCreditFlag" column="SUPPORT_CREDIT_FLAG" jdbcType="VARCHAR"/>
+        <result property="unionPayCardType" column="UNION_PAY_CARD_TYPE" jdbcType="VARCHAR"/>
+        <result property="absTract" column="ABS_TRACT" jdbcType="VARCHAR"/>
+        <result property="complianceState" column="COMPLIANCE_STATE" jdbcType="VARCHAR"/>
+        <result property="complianceInfo" column="COMPLIANCE_INFO" jdbcType="VARCHAR"/>
+        <result property="overLength" column="OVER_LENGTH" jdbcType="VARCHAR"/>
+        <result property="rowVersion" column="ROW_VERSION" jdbcType="INTEGER"/>
+        <result property="decodeAmount" column="DECODE_AMOUNT" jdbcType="NUMERIC"/>
+        <result property="accountingFlag" column="ACCOUNTING_FLAG" jdbcType="VARCHAR"/>
+        <result property="reqDate" column="REQ_DATE" jdbcType="TIMESTAMP"/>
+        <result property="bankReturnTime" column="BANK_RETURN_TIME" jdbcType="TIMESTAMP"/>
+        <result property="policyNum" column="POLICY_NUM" jdbcType="VARCHAR"/>
+        <result property="custAreaName" column="CUST_AREA_NAME" jdbcType="VARCHAR"/>
+        <result property="encryptFlag" column="ENCRYPT_FLAG" jdbcType="VARCHAR"/>
+        <result property="convertedBdNo" column="CONVERTED_BD_NO" jdbcType="VARCHAR"/>
+        <result property="riskControlState" column="RISK_CONTROL_STATE" jdbcType="VARCHAR"/>
+        <result property="riskControlHitType" column="RISK_CONTROL_HIT_TYPE" jdbcType="VARCHAR"/>
+        <result property="inTime" column="IN_TIME" jdbcType="TIMESTAMP"/>
+        <result property="sendBankTime" column="SEND_BANK_TIME" jdbcType="TIMESTAMP"/>
+        <result property="failReconcileType" column="FAIL_RECONCILE_TYPE" jdbcType="VARCHAR"/>
+        <result property="lastQueryTime" column="LAST_QUERY_TIME" jdbcType="TIMESTAMP"/>
+        <result property="lastModifyTime" column="LAST_MODIFY_TIME" jdbcType="TIMESTAMP"/>
+        <result property="dayFlowNo" column="DAY_FLOW_NO" jdbcType="VARCHAR"/>
+        <result property="accountingNo" column="ACCOUNTING_NO" jdbcType="VARCHAR"/>
+        <result property="remainQueryCount" column="REMAIN_QUERY_COUNT" jdbcType="INTEGER"/>
+        <result property="protocolNum" column="PROTOCOL_NUM" jdbcType="VARCHAR"/>
+        <result property="agreementNo" column="AGREEMENT_NO" jdbcType="VARCHAR"/>
+        <result property="signBusType" column="SIGN_BUS_TYPE" jdbcType="VARCHAR"/>
+        <result property="prdName" column="PRD_NAME" jdbcType="VARCHAR"/>
+        <result property="signTrans" column="SIGN_TRANS" jdbcType="VARCHAR"/>
+        <result property="matchedAreaCode" column="MATCHED_AREA_CODE" jdbcType="VARCHAR"/>
+        <result property="matchedBankLocationCode" column="MATCHED_BANK_LOCATION_CODE" jdbcType="VARCHAR"/>
+        <result property="matchedBankLocationName" column="MATCHED_BANK_LOCATION_NAME" jdbcType="VARCHAR"/>
+        <result property="matchedCustBankCode" column="MATCHED_CUST_BANK_CODE" jdbcType="VARCHAR"/>
+        <result property="refundFlag" column="REFUND_FLAG" jdbcType="VARCHAR"/>
+        <result property="icbcSignRespMsg" column="ICBC_SIGN_RESP_MSG" jdbcType="VARCHAR"/>
+        <result property="fgResultOutLibrary" column="FG_RESULT_OUT_LIBRARY" jdbcType="VARCHAR"/>
+        <result property="currentBankReturnResult" column="CURRENT_BANK_RETURN_RESULT" jdbcType="VARCHAR"/>
+        <result property="belongAreaMatched" column="BELONG_AREA_MATCHED" jdbcType="VARCHAR"/>
+        <result property="belongAreaMatchRule" column="BELONG_AREA_MATCH_RULE" jdbcType="VARCHAR"/>
+        <result property="sourceBankReturnCode" column="SOURCE_BANK_RETURN_CODE" jdbcType="VARCHAR"/>
+        <result property="sourceBankReturnMsg" column="SOURCE_BANK_RETURN_MSG" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="SeBdMap">
+        select URID,
+               ENT_NUM,
+               BAT_NO,
+               BD_NO,
+               ENT_CHANNEL_CODE,
+               ENT_ACC_NUM,
+               CARD_TYPE,
+               CUST_BANK_CODE,
+               CUST_ACC_NUM,
+               CUST_ACC_NAME,
+               CUST_AREA_CODE,
+               CUST_BANK_LOCATION_CODE,
+               CUST_BANK_LOCATION_NAME,
+               PRIVATE_FLAG,
+               AMOUNT,
+               CURRENCY,
+               PROTOCOL_CODE,
+               PROTOCOL_USER_CODE,
+               CERT_TYPE,
+               CERT_NUM,
+               PHONE,
+               RECONCILIATION_CODE,
+               PURPOSE,
+               MEMO,
+               BATCH_TO_SINGLE_FLAG,
+               FLOW_NO,
+               SINGLE_TRANS_VERIFY_CODE,
+               SINGLE_QUERY_VERIFY_CODE,
+               SOURCE_NOTE,
+               ORG_CODE,
+               SAME_BANK_FLAG,
+               URGENT_FLAG,
+               SOURCE_URID,
+               WARN_REVOKED,
+               REPEAT_CONDITION_VALUE,
+               WARN_DATE,
+               DETAIL_MD5,
+               BANK_EXTEND_1,
+               BANK_EXTEND_2,
+               BANK_EXTEND_3,
+               BANK_EXTEND_4,
+               BANK_EXTEND_5,
+               BANK_RETURN_STATE,
+               BANK_RETURN_CODE,
+               BANK_RETURN_MSG,
+               BANK_LOCATION_MATCH_FLAG,
+               BANK_LOCATION_MATCH_NAME,
+               MONEY_WAY,
+               ACCOUNTING_DATE,
+               FG_UNIQUE_ID,
+               MATCH_BANK_ID,
+               MATCH_AREA_CODE,
+               BANK_DETAIL_RECONCILE,
+               RECONCILE_FILE_RECONCILE,
+               TOTAL_AMOUNT_RECONCILE,
+               FAIL_BANK_DETAIL_RECONCILE,
+               FAIL_ACCOUNTING_DATE,
+               CYCLE_DATE,
+               FAIL_CYCLE_DATE,
+               SUPPORT_CREDIT_FLAG,
+               UNION_PAY_CARD_TYPE,
+               ABS_TRACT,
+               COMPLIANCE_STATE,
+               COMPLIANCE_INFO,
+               OVER_LENGTH,
+               ROW_VERSION,
+               DECODE_AMOUNT,
+               ACCOUNTING_FLAG,
+               REQ_DATE,
+               BANK_RETURN_TIME,
+               POLICY_NUM,
+               CUST_AREA_NAME,
+               ENCRYPT_FLAG,
+               CONVERTED_BD_NO,
+               RISK_CONTROL_STATE,
+               RISK_CONTROL_HIT_TYPE,
+               IN_TIME,
+               SEND_BANK_TIME,
+               FAIL_RECONCILE_TYPE,
+               LAST_QUERY_TIME,
+               LAST_MODIFY_TIME,
+               DAY_FLOW_NO,
+               ACCOUNTING_NO,
+               REMAIN_QUERY_COUNT,
+               PROTOCOL_NUM,
+               AGREEMENT_NO,
+               SIGN_BUS_TYPE,
+               PRD_NAME,
+               SIGN_TRANS,
+               MATCHED_AREA_CODE,
+               MATCHED_BANK_LOCATION_CODE,
+               MATCHED_BANK_LOCATION_NAME,
+               MATCHED_CUST_BANK_CODE,
+               REFUND_FLAG,
+               ICBC_SIGN_RESP_MSG,
+               FG_RESULT_OUT_LIBRARY,
+               CURRENT_BANK_RETURN_RESULT,
+               BELONG_AREA_MATCHED,
+               BELONG_AREA_MATCH_RULE,
+               SOURCE_BANK_RETURN_CODE,
+               SOURCE_BANK_RETURN_MSG
+        from GARDPAY_REPORT.SE_BD
+        where URID = #{urid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="SeBdMap">
+        select URID,
+               ENT_NUM,
+               BAT_NO,
+               BD_NO,
+               ENT_CHANNEL_CODE,
+               ENT_ACC_NUM,
+               CARD_TYPE,
+               CUST_BANK_CODE,
+               CUST_ACC_NUM,
+               CUST_ACC_NAME,
+               CUST_AREA_CODE,
+               CUST_BANK_LOCATION_CODE,
+               CUST_BANK_LOCATION_NAME,
+               PRIVATE_FLAG,
+               AMOUNT,
+               CURRENCY,
+               PROTOCOL_CODE,
+               PROTOCOL_USER_CODE,
+               CERT_TYPE,
+               CERT_NUM,
+               PHONE,
+               RECONCILIATION_CODE,
+               PURPOSE,
+               MEMO,
+               BATCH_TO_SINGLE_FLAG,
+               FLOW_NO,
+               SINGLE_TRANS_VERIFY_CODE,
+               SINGLE_QUERY_VERIFY_CODE,
+               SOURCE_NOTE,
+               ORG_CODE,
+               SAME_BANK_FLAG,
+               URGENT_FLAG,
+               SOURCE_URID,
+               WARN_REVOKED,
+               REPEAT_CONDITION_VALUE,
+               WARN_DATE,
+               DETAIL_MD5,
+               BANK_EXTEND_1,
+               BANK_EXTEND_2,
+               BANK_EXTEND_3,
+               BANK_EXTEND_4,
+               BANK_EXTEND_5,
+               BANK_RETURN_STATE,
+               BANK_RETURN_CODE,
+               BANK_RETURN_MSG,
+               BANK_LOCATION_MATCH_FLAG,
+               BANK_LOCATION_MATCH_NAME,
+               MONEY_WAY,
+               ACCOUNTING_DATE,
+               FG_UNIQUE_ID,
+               MATCH_BANK_ID,
+               MATCH_AREA_CODE,
+               BANK_DETAIL_RECONCILE,
+               RECONCILE_FILE_RECONCILE,
+               TOTAL_AMOUNT_RECONCILE,
+               FAIL_BANK_DETAIL_RECONCILE,
+               FAIL_ACCOUNTING_DATE,
+               CYCLE_DATE,
+               FAIL_CYCLE_DATE,
+               SUPPORT_CREDIT_FLAG,
+               UNION_PAY_CARD_TYPE,
+               ABS_TRACT,
+               COMPLIANCE_STATE,
+               COMPLIANCE_INFO,
+               OVER_LENGTH,
+               ROW_VERSION,
+               DECODE_AMOUNT,
+               ACCOUNTING_FLAG,
+               REQ_DATE,
+               BANK_RETURN_TIME,
+               POLICY_NUM,
+               CUST_AREA_NAME,
+               ENCRYPT_FLAG,
+               CONVERTED_BD_NO,
+               RISK_CONTROL_STATE,
+               RISK_CONTROL_HIT_TYPE,
+               IN_TIME,
+               SEND_BANK_TIME,
+               FAIL_RECONCILE_TYPE,
+               LAST_QUERY_TIME,
+               LAST_MODIFY_TIME,
+               DAY_FLOW_NO,
+               ACCOUNTING_NO,
+               REMAIN_QUERY_COUNT,
+               PROTOCOL_NUM,
+               AGREEMENT_NO,
+               SIGN_BUS_TYPE,
+               PRD_NAME,
+               SIGN_TRANS,
+               MATCHED_AREA_CODE,
+               MATCHED_BANK_LOCATION_CODE,
+               MATCHED_BANK_LOCATION_NAME,
+               MATCHED_CUST_BANK_CODE,
+               REFUND_FLAG,
+               ICBC_SIGN_RESP_MSG,
+               FG_RESULT_OUT_LIBRARY,
+               CURRENT_BANK_RETURN_RESULT,
+               BELONG_AREA_MATCHED,
+               BELONG_AREA_MATCH_RULE,
+               SOURCE_BANK_RETURN_CODE,
+               SOURCE_BANK_RETURN_MSG
+        from GARDPAY_REPORT.SE_BD limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="SeBdMap">
+        select
+        URID, ENT_NUM, BAT_NO, BD_NO, ENT_CHANNEL_CODE, ENT_ACC_NUM, CARD_TYPE, CUST_BANK_CODE, CUST_ACC_NUM,
+        CUST_ACC_NAME, CUST_AREA_CODE, CUST_BANK_LOCATION_CODE, CUST_BANK_LOCATION_NAME, PRIVATE_FLAG, AMOUNT, CURRENCY,
+        PROTOCOL_CODE, PROTOCOL_USER_CODE, CERT_TYPE, CERT_NUM, PHONE, RECONCILIATION_CODE, PURPOSE, MEMO,
+        BATCH_TO_SINGLE_FLAG, FLOW_NO, SINGLE_TRANS_VERIFY_CODE, SINGLE_QUERY_VERIFY_CODE, SOURCE_NOTE, ORG_CODE,
+        SAME_BANK_FLAG, URGENT_FLAG, SOURCE_URID, WARN_REVOKED, REPEAT_CONDITION_VALUE, WARN_DATE, DETAIL_MD5,
+        BANK_EXTEND_1, BANK_EXTEND_2, BANK_EXTEND_3, BANK_EXTEND_4, BANK_EXTEND_5, BANK_RETURN_STATE, BANK_RETURN_CODE,
+        BANK_RETURN_MSG, BANK_LOCATION_MATCH_FLAG, BANK_LOCATION_MATCH_NAME, MONEY_WAY, ACCOUNTING_DATE, FG_UNIQUE_ID,
+        MATCH_BANK_ID, MATCH_AREA_CODE, BANK_DETAIL_RECONCILE, RECONCILE_FILE_RECONCILE, TOTAL_AMOUNT_RECONCILE,
+        FAIL_BANK_DETAIL_RECONCILE, FAIL_ACCOUNTING_DATE, CYCLE_DATE, FAIL_CYCLE_DATE, SUPPORT_CREDIT_FLAG,
+        UNION_PAY_CARD_TYPE, ABS_TRACT, COMPLIANCE_STATE, COMPLIANCE_INFO, OVER_LENGTH, ROW_VERSION, DECODE_AMOUNT,
+        ACCOUNTING_FLAG, REQ_DATE, BANK_RETURN_TIME, POLICY_NUM, CUST_AREA_NAME, ENCRYPT_FLAG, CONVERTED_BD_NO,
+        RISK_CONTROL_STATE, RISK_CONTROL_HIT_TYPE, IN_TIME, SEND_BANK_TIME, FAIL_RECONCILE_TYPE, LAST_QUERY_TIME,
+        LAST_MODIFY_TIME, DAY_FLOW_NO, ACCOUNTING_NO, REMAIN_QUERY_COUNT, PROTOCOL_NUM, AGREEMENT_NO, SIGN_BUS_TYPE,
+        PRD_NAME, SIGN_TRANS, MATCHED_AREA_CODE, MATCHED_BANK_LOCATION_CODE, MATCHED_BANK_LOCATION_NAME,
+        MATCHED_CUST_BANK_CODE, REFUND_FLAG, ICBC_SIGN_RESP_MSG, FG_RESULT_OUT_LIBRARY, CURRENT_BANK_RETURN_RESULT,
+        BELONG_AREA_MATCHED, BELONG_AREA_MATCH_RULE, SOURCE_BANK_RETURN_CODE, SOURCE_BANK_RETURN_MSG
+        from GARDPAY_REPORT.SE_BD
+        <where>
+            <if test="urid != null">
+                and URID = #{urid}
+            </if>
+            <if test="entNum != null and entNum != ''">
+                and ENT_NUM = #{entNum}
+            </if>
+            <if test="batNo != null and batNo != ''">
+                and BAT_NO = #{batNo}
+            </if>
+            <if test="bdNo != null and bdNo != ''">
+                and BD_NO = #{bdNo}
+            </if>
+            <if test="entChannelCode != null and entChannelCode != ''">
+                and ENT_CHANNEL_CODE = #{entChannelCode}
+            </if>
+            <if test="entAccNum != null and entAccNum != ''">
+                and ENT_ACC_NUM = #{entAccNum}
+            </if>
+            <if test="cardType != null and cardType != ''">
+                and CARD_TYPE = #{cardType}
+            </if>
+            <if test="custBankCode != null and custBankCode != ''">
+                and CUST_BANK_CODE = #{custBankCode}
+            </if>
+            <if test="custAccNum != null and custAccNum != ''">
+                and CUST_ACC_NUM = #{custAccNum}
+            </if>
+            <if test="custAccName != null and custAccName != ''">
+                and CUST_ACC_NAME = #{custAccName}
+            </if>
+            <if test="custAreaCode != null and custAreaCode != ''">
+                and CUST_AREA_CODE = #{custAreaCode}
+            </if>
+            <if test="custBankLocationCode != null and custBankLocationCode != ''">
+                and CUST_BANK_LOCATION_CODE = #{custBankLocationCode}
+            </if>
+            <if test="custBankLocationName != null and custBankLocationName != ''">
+                and CUST_BANK_LOCATION_NAME = #{custBankLocationName}
+            </if>
+            <if test="privateFlag != null and privateFlag != ''">
+                and PRIVATE_FLAG = #{privateFlag}
+            </if>
+            <if test="amount != null and amount != ''">
+                and AMOUNT = #{amount}
+            </if>
+            <if test="currency != null and currency != ''">
+                and CURRENCY = #{currency}
+            </if>
+            <if test="protocolCode != null and protocolCode != ''">
+                and PROTOCOL_CODE = #{protocolCode}
+            </if>
+            <if test="protocolUserCode != null and protocolUserCode != ''">
+                and PROTOCOL_USER_CODE = #{protocolUserCode}
+            </if>
+            <if test="certType != null and certType != ''">
+                and CERT_TYPE = #{certType}
+            </if>
+            <if test="certNum != null and certNum != ''">
+                and CERT_NUM = #{certNum}
+            </if>
+            <if test="phone != null and phone != ''">
+                and PHONE = #{phone}
+            </if>
+            <if test="reconciliationCode != null and reconciliationCode != ''">
+                and RECONCILIATION_CODE = #{reconciliationCode}
+            </if>
+            <if test="purpose != null and purpose != ''">
+                and PURPOSE = #{purpose}
+            </if>
+            <if test="memo != null and memo != ''">
+                and MEMO = #{memo}
+            </if>
+            <if test="batchToSingleFlag != null and batchToSingleFlag != ''">
+                and BATCH_TO_SINGLE_FLAG = #{batchToSingleFlag}
+            </if>
+            <if test="flowNo != null and flowNo != ''">
+                and FLOW_NO = #{flowNo}
+            </if>
+            <if test="singleTransVerifyCode != null and singleTransVerifyCode != ''">
+                and SINGLE_TRANS_VERIFY_CODE = #{singleTransVerifyCode}
+            </if>
+            <if test="singleQueryVerifyCode != null and singleQueryVerifyCode != ''">
+                and SINGLE_QUERY_VERIFY_CODE = #{singleQueryVerifyCode}
+            </if>
+            <if test="sourceNote != null and sourceNote != ''">
+                and SOURCE_NOTE = #{sourceNote}
+            </if>
+            <if test="orgCode != null and orgCode != ''">
+                and ORG_CODE = #{orgCode}
+            </if>
+            <if test="sameBankFlag != null and sameBankFlag != ''">
+                and SAME_BANK_FLAG = #{sameBankFlag}
+            </if>
+            <if test="urgentFlag != null and urgentFlag != ''">
+                and URGENT_FLAG = #{urgentFlag}
+            </if>
+            <if test="sourceUrid != null and sourceUrid != ''">
+                and SOURCE_URID = #{sourceUrid}
+            </if>
+            <if test="warnRevoked != null and warnRevoked != ''">
+                and WARN_REVOKED = #{warnRevoked}
+            </if>
+            <if test="repeatConditionValue != null and repeatConditionValue != ''">
+                and REPEAT_CONDITION_VALUE = #{repeatConditionValue}
+            </if>
+            <if test="warnDate != null and warnDate != ''">
+                and WARN_DATE = #{warnDate}
+            </if>
+            <if test="detailMd5 != null and detailMd5 != ''">
+                and DETAIL_MD5 = #{detailMd5}
+            </if>
+            <if test="bankExtend1 != null and bankExtend1 != ''">
+                and BANK_EXTEND_1 = #{bankExtend1}
+            </if>
+            <if test="bankExtend2 != null and bankExtend2 != ''">
+                and BANK_EXTEND_2 = #{bankExtend2}
+            </if>
+            <if test="bankExtend3 != null and bankExtend3 != ''">
+                and BANK_EXTEND_3 = #{bankExtend3}
+            </if>
+            <if test="bankExtend4 != null and bankExtend4 != ''">
+                and BANK_EXTEND_4 = #{bankExtend4}
+            </if>
+            <if test="bankExtend5 != null and bankExtend5 != ''">
+                and BANK_EXTEND_5 = #{bankExtend5}
+            </if>
+            <if test="bankReturnState != null and bankReturnState != ''">
+                and BANK_RETURN_STATE = #{bankReturnState}
+            </if>
+            <if test="bankReturnCode != null and bankReturnCode != ''">
+                and BANK_RETURN_CODE = #{bankReturnCode}
+            </if>
+            <if test="bankReturnMsg != null and bankReturnMsg != ''">
+                and BANK_RETURN_MSG = #{bankReturnMsg}
+            </if>
+            <if test="bankLocationMatchFlag != null">
+                and BANK_LOCATION_MATCH_FLAG = #{bankLocationMatchFlag}
+            </if>
+            <if test="bankLocationMatchName != null and bankLocationMatchName != ''">
+                and BANK_LOCATION_MATCH_NAME = #{bankLocationMatchName}
+            </if>
+            <if test="moneyWay != null and moneyWay != ''">
+                and MONEY_WAY = #{moneyWay}
+            </if>
+            <if test="accountingDate != null and accountingDate != ''">
+                and ACCOUNTING_DATE = #{accountingDate}
+            </if>
+            <if test="fgUniqueId != null and fgUniqueId != ''">
+                and FG_UNIQUE_ID = #{fgUniqueId}
+            </if>
+            <if test="matchBankId != null and matchBankId != ''">
+                and MATCH_BANK_ID = #{matchBankId}
+            </if>
+            <if test="matchAreaCode != null and matchAreaCode != ''">
+                and MATCH_AREA_CODE = #{matchAreaCode}
+            </if>
+            <if test="bankDetailReconcile != null and bankDetailReconcile != ''">
+                and BANK_DETAIL_RECONCILE = #{bankDetailReconcile}
+            </if>
+            <if test="reconcileFileReconcile != null and reconcileFileReconcile != ''">
+                and RECONCILE_FILE_RECONCILE = #{reconcileFileReconcile}
+            </if>
+            <if test="totalAmountReconcile != null and totalAmountReconcile != ''">
+                and TOTAL_AMOUNT_RECONCILE = #{totalAmountReconcile}
+            </if>
+            <if test="failBankDetailReconcile != null and failBankDetailReconcile != ''">
+                and FAIL_BANK_DETAIL_RECONCILE = #{failBankDetailReconcile}
+            </if>
+            <if test="failAccountingDate != null and failAccountingDate != ''">
+                and FAIL_ACCOUNTING_DATE = #{failAccountingDate}
+            </if>
+            <if test="cycleDate != null">
+                and CYCLE_DATE = #{cycleDate}
+            </if>
+            <if test="failCycleDate != null">
+                and FAIL_CYCLE_DATE = #{failCycleDate}
+            </if>
+            <if test="supportCreditFlag != null and supportCreditFlag != ''">
+                and SUPPORT_CREDIT_FLAG = #{supportCreditFlag}
+            </if>
+            <if test="unionPayCardType != null and unionPayCardType != ''">
+                and UNION_PAY_CARD_TYPE = #{unionPayCardType}
+            </if>
+            <if test="absTract != null and absTract != ''">
+                and ABS_TRACT = #{absTract}
+            </if>
+            <if test="complianceState != null and complianceState != ''">
+                and COMPLIANCE_STATE = #{complianceState}
+            </if>
+            <if test="complianceInfo != null and complianceInfo != ''">
+                and COMPLIANCE_INFO = #{complianceInfo}
+            </if>
+            <if test="overLength != null and overLength != ''">
+                and OVER_LENGTH = #{overLength}
+            </if>
+            <if test="rowVersion != null">
+                and ROW_VERSION = #{rowVersion}
+            </if>
+            <if test="decodeAmount != null">
+                and DECODE_AMOUNT = #{decodeAmount}
+            </if>
+            <if test="accountingFlag != null and accountingFlag != ''">
+                and ACCOUNTING_FLAG = #{accountingFlag}
+            </if>
+            <if test="reqDate != null">
+                and REQ_DATE = #{reqDate}
+            </if>
+            <if test="bankReturnTime != null">
+                and BANK_RETURN_TIME = #{bankReturnTime}
+            </if>
+            <if test="policyNum != null and policyNum != ''">
+                and POLICY_NUM = #{policyNum}
+            </if>
+            <if test="custAreaName != null and custAreaName != ''">
+                and CUST_AREA_NAME = #{custAreaName}
+            </if>
+            <if test="encryptFlag != null and encryptFlag != ''">
+                and ENCRYPT_FLAG = #{encryptFlag}
+            </if>
+            <if test="convertedBdNo != null and convertedBdNo != ''">
+                and CONVERTED_BD_NO = #{convertedBdNo}
+            </if>
+            <if test="riskControlState != null and riskControlState != ''">
+                and RISK_CONTROL_STATE = #{riskControlState}
+            </if>
+            <if test="riskControlHitType != null and riskControlHitType != ''">
+                and RISK_CONTROL_HIT_TYPE = #{riskControlHitType}
+            </if>
+            <if test="inTime != null">
+                and IN_TIME = #{inTime}
+            </if>
+            <if test="sendBankTime != null">
+                and SEND_BANK_TIME = #{sendBankTime}
+            </if>
+            <if test="failReconcileType != null and failReconcileType != ''">
+                and FAIL_RECONCILE_TYPE = #{failReconcileType}
+            </if>
+            <if test="lastQueryTime != null">
+                and LAST_QUERY_TIME = #{lastQueryTime}
+            </if>
+            <if test="lastModifyTime != null">
+                and LAST_MODIFY_TIME = #{lastModifyTime}
+            </if>
+            <if test="dayFlowNo != null and dayFlowNo != ''">
+                and DAY_FLOW_NO = #{dayFlowNo}
+            </if>
+            <if test="accountingNo != null and accountingNo != ''">
+                and ACCOUNTING_NO = #{accountingNo}
+            </if>
+            <if test="remainQueryCount != null">
+                and REMAIN_QUERY_COUNT = #{remainQueryCount}
+            </if>
+            <if test="protocolNum != null and protocolNum != ''">
+                and PROTOCOL_NUM = #{protocolNum}
+            </if>
+            <if test="agreementNo != null and agreementNo != ''">
+                and AGREEMENT_NO = #{agreementNo}
+            </if>
+            <if test="signBusType != null and signBusType != ''">
+                and SIGN_BUS_TYPE = #{signBusType}
+            </if>
+            <if test="prdName != null and prdName != ''">
+                and PRD_NAME = #{prdName}
+            </if>
+            <if test="signTrans != null and signTrans != ''">
+                and SIGN_TRANS = #{signTrans}
+            </if>
+            <if test="matchedAreaCode != null and matchedAreaCode != ''">
+                and MATCHED_AREA_CODE = #{matchedAreaCode}
+            </if>
+            <if test="matchedBankLocationCode != null and matchedBankLocationCode != ''">
+                and MATCHED_BANK_LOCATION_CODE = #{matchedBankLocationCode}
+            </if>
+            <if test="matchedBankLocationName != null and matchedBankLocationName != ''">
+                and MATCHED_BANK_LOCATION_NAME = #{matchedBankLocationName}
+            </if>
+            <if test="matchedCustBankCode != null and matchedCustBankCode != ''">
+                and MATCHED_CUST_BANK_CODE = #{matchedCustBankCode}
+            </if>
+            <if test="refundFlag != null and refundFlag != ''">
+                and REFUND_FLAG = #{refundFlag}
+            </if>
+            <if test="icbcSignRespMsg != null and icbcSignRespMsg != ''">
+                and ICBC_SIGN_RESP_MSG = #{icbcSignRespMsg}
+            </if>
+            <if test="fgResultOutLibrary != null and fgResultOutLibrary != ''">
+                and FG_RESULT_OUT_LIBRARY = #{fgResultOutLibrary}
+            </if>
+            <if test="currentBankReturnResult != null and currentBankReturnResult != ''">
+                and CURRENT_BANK_RETURN_RESULT = #{currentBankReturnResult}
+            </if>
+            <if test="belongAreaMatched != null and belongAreaMatched != ''">
+                and BELONG_AREA_MATCHED = #{belongAreaMatched}
+            </if>
+            <if test="belongAreaMatchRule != null and belongAreaMatchRule != ''">
+                and BELONG_AREA_MATCH_RULE = #{belongAreaMatchRule}
+            </if>
+            <if test="sourceBankReturnCode != null and sourceBankReturnCode != ''">
+                and SOURCE_BANK_RETURN_CODE = #{sourceBankReturnCode}
+            </if>
+            <if test="sourceBankReturnMsg != null and sourceBankReturnMsg != ''">
+                and SOURCE_BANK_RETURN_MSG = #{sourceBankReturnMsg}
+            </if>
+        </where>
+    </select>
+    <select id="selectAll" resultMap="SeBdMap">
+    select
+    URID, ENT_NUM, BAT_NO, BD_NO, ENT_CHANNEL_CODE, ENT_ACC_NUM, CARD_TYPE, CUST_BANK_CODE, CUST_ACC_NUM,
+    CUST_ACC_NAME, CUST_AREA_CODE, CUST_BANK_LOCATION_CODE, CUST_BANK_LOCATION_NAME, PRIVATE_FLAG, AMOUNT, CURRENCY,
+    PROTOCOL_CODE, PROTOCOL_USER_CODE, CERT_TYPE, CERT_NUM, PHONE, RECONCILIATION_CODE, PURPOSE, MEMO,
+    BATCH_TO_SINGLE_FLAG, FLOW_NO, SINGLE_TRANS_VERIFY_CODE, SINGLE_QUERY_VERIFY_CODE, SOURCE_NOTE, ORG_CODE,
+    SAME_BANK_FLAG, URGENT_FLAG, SOURCE_URID, WARN_REVOKED, REPEAT_CONDITION_VALUE, WARN_DATE, DETAIL_MD5,
+    BANK_EXTEND_1, BANK_EXTEND_2, BANK_EXTEND_3, BANK_EXTEND_4, BANK_EXTEND_5, BANK_RETURN_STATE, BANK_RETURN_CODE,
+    BANK_RETURN_MSG, BANK_LOCATION_MATCH_FLAG, BANK_LOCATION_MATCH_NAME, MONEY_WAY, ACCOUNTING_DATE, FG_UNIQUE_ID,
+    MATCH_BANK_ID, MATCH_AREA_CODE, BANK_DETAIL_RECONCILE, RECONCILE_FILE_RECONCILE, TOTAL_AMOUNT_RECONCILE,
+    FAIL_BANK_DETAIL_RECONCILE, FAIL_ACCOUNTING_DATE, CYCLE_DATE, FAIL_CYCLE_DATE, SUPPORT_CREDIT_FLAG,
+    UNION_PAY_CARD_TYPE, ABS_TRACT, COMPLIANCE_STATE, COMPLIANCE_INFO, OVER_LENGTH, ROW_VERSION, DECODE_AMOUNT,
+    ACCOUNTING_FLAG, REQ_DATE, BANK_RETURN_TIME, POLICY_NUM, CUST_AREA_NAME, ENCRYPT_FLAG, CONVERTED_BD_NO,
+    RISK_CONTROL_STATE, RISK_CONTROL_HIT_TYPE, IN_TIME, SEND_BANK_TIME, FAIL_RECONCILE_TYPE, LAST_QUERY_TIME,
+    LAST_MODIFY_TIME, DAY_FLOW_NO, ACCOUNTING_NO, REMAIN_QUERY_COUNT, PROTOCOL_NUM, AGREEMENT_NO, SIGN_BUS_TYPE,
+    PRD_NAME, SIGN_TRANS, MATCHED_AREA_CODE, MATCHED_BANK_LOCATION_CODE, MATCHED_BANK_LOCATION_NAME,
+    MATCHED_CUST_BANK_CODE, REFUND_FLAG, ICBC_SIGN_RESP_MSG, FG_RESULT_OUT_LIBRARY, CURRENT_BANK_RETURN_RESULT,
+    BELONG_AREA_MATCHED, BELONG_AREA_MATCH_RULE, SOURCE_BANK_RETURN_CODE, SOURCE_BANK_RETURN_MSG
+    from GARDPAY_REPORT.SE_BD
+    </select>
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="urid" useGeneratedKeys="true">
+        insert into GARDPAY_REPORT.SE_BD(ENT_NUM, BAT_NO, BD_NO, ENT_CHANNEL_CODE, ENT_ACC_NUM, CARD_TYPE,
+                                         CUST_BANK_CODE, CUST_ACC_NUM, CUST_ACC_NAME, CUST_AREA_CODE,
+                                         CUST_BANK_LOCATION_CODE, CUST_BANK_LOCATION_NAME, PRIVATE_FLAG, AMOUNT,
+                                         CURRENCY, PROTOCOL_CODE, PROTOCOL_USER_CODE, CERT_TYPE, CERT_NUM, PHONE,
+                                         RECONCILIATION_CODE, PURPOSE, MEMO, BATCH_TO_SINGLE_FLAG, FLOW_NO,
+                                         SINGLE_TRANS_VERIFY_CODE, SINGLE_QUERY_VERIFY_CODE, SOURCE_NOTE, ORG_CODE,
+                                         SAME_BANK_FLAG, URGENT_FLAG, SOURCE_URID, WARN_REVOKED, REPEAT_CONDITION_VALUE,
+                                         WARN_DATE, DETAIL_MD5, BANK_EXTEND_1, BANK_EXTEND_2, BANK_EXTEND_3,
+                                         BANK_EXTEND_4, BANK_EXTEND_5, BANK_RETURN_STATE, BANK_RETURN_CODE,
+                                         BANK_RETURN_MSG, BANK_LOCATION_MATCH_FLAG, BANK_LOCATION_MATCH_NAME, MONEY_WAY,
+                                         ACCOUNTING_DATE, FG_UNIQUE_ID, MATCH_BANK_ID, MATCH_AREA_CODE,
+                                         BANK_DETAIL_RECONCILE, RECONCILE_FILE_RECONCILE, TOTAL_AMOUNT_RECONCILE,
+                                         FAIL_BANK_DETAIL_RECONCILE, FAIL_ACCOUNTING_DATE, CYCLE_DATE, FAIL_CYCLE_DATE,
+                                         SUPPORT_CREDIT_FLAG, UNION_PAY_CARD_TYPE, ABS_TRACT, COMPLIANCE_STATE,
+                                         COMPLIANCE_INFO, OVER_LENGTH, ROW_VERSION, DECODE_AMOUNT, ACCOUNTING_FLAG,
+                                         REQ_DATE, BANK_RETURN_TIME, POLICY_NUM, CUST_AREA_NAME, ENCRYPT_FLAG,
+                                         CONVERTED_BD_NO, RISK_CONTROL_STATE, RISK_CONTROL_HIT_TYPE, IN_TIME,
+                                         SEND_BANK_TIME, FAIL_RECONCILE_TYPE, LAST_QUERY_TIME, LAST_MODIFY_TIME,
+                                         DAY_FLOW_NO, ACCOUNTING_NO, REMAIN_QUERY_COUNT, PROTOCOL_NUM, AGREEMENT_NO,
+                                         SIGN_BUS_TYPE, PRD_NAME, SIGN_TRANS, MATCHED_AREA_CODE,
+                                         MATCHED_BANK_LOCATION_CODE, MATCHED_BANK_LOCATION_NAME, MATCHED_CUST_BANK_CODE,
+                                         REFUND_FLAG, ICBC_SIGN_RESP_MSG, FG_RESULT_OUT_LIBRARY,
+                                         CURRENT_BANK_RETURN_RESULT, BELONG_AREA_MATCHED, BELONG_AREA_MATCH_RULE,
+                                         SOURCE_BANK_RETURN_CODE, SOURCE_BANK_RETURN_MSG)
+        values (#{entNum}, #{batNo}, #{bdNo}, #{entChannelCode}, #{entAccNum}, #{cardType}, #{custBankCode},
+                #{custAccNum}, #{custAccName}, #{custAreaCode}, #{custBankLocationCode}, #{custBankLocationName},
+                #{privateFlag}, #{amount}, #{currency}, #{protocolCode}, #{protocolUserCode}, #{certType}, #{certNum},
+                #{phone}, #{reconciliationCode}, #{purpose}, #{memo}, #{batchToSingleFlag}, #{flowNo},
+                #{singleTransVerifyCode}, #{singleQueryVerifyCode}, #{sourceNote}, #{orgCode}, #{sameBankFlag},
+                #{urgentFlag}, #{sourceUrid}, #{warnRevoked}, #{repeatConditionValue}, #{warnDate}, #{detailMd5},
+                #{bankExtend1}, #{bankExtend2}, #{bankExtend3}, #{bankExtend4}, #{bankExtend5}, #{bankReturnState},
+                #{bankReturnCode}, #{bankReturnMsg}, #{bankLocationMatchFlag}, #{bankLocationMatchName}, #{moneyWay},
+                #{accountingDate}, #{fgUniqueId}, #{matchBankId}, #{matchAreaCode}, #{bankDetailReconcile},
+                #{reconcileFileReconcile}, #{totalAmountReconcile}, #{failBankDetailReconcile}, #{failAccountingDate},
+                #{cycleDate}, #{failCycleDate}, #{supportCreditFlag}, #{unionPayCardType}, #{absTract},
+                #{complianceState}, #{complianceInfo}, #{overLength}, #{rowVersion}, #{decodeAmount}, #{accountingFlag},
+                #{reqDate}, #{bankReturnTime}, #{policyNum}, #{custAreaName}, #{encryptFlag}, #{convertedBdNo},
+                #{riskControlState}, #{riskControlHitType}, #{inTime}, #{sendBankTime}, #{failReconcileType},
+                #{lastQueryTime}, #{lastModifyTime}, #{dayFlowNo}, #{accountingNo}, #{remainQueryCount}, #{protocolNum},
+                #{agreementNo}, #{signBusType}, #{prdName}, #{signTrans}, #{matchedAreaCode},
+                #{matchedBankLocationCode}, #{matchedBankLocationName}, #{matchedCustBankCode}, #{refundFlag},
+                #{icbcSignRespMsg}, #{fgResultOutLibrary}, #{currentBankReturnResult}, #{belongAreaMatched},
+                #{belongAreaMatchRule}, #{sourceBankReturnCode}, #{sourceBankReturnMsg})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="urid" useGeneratedKeys="true">
+        insert into GARDPAY_REPORT.SE_BD(ENT_NUM, BAT_NO, BD_NO, ENT_CHANNEL_CODE, ENT_ACC_NUM, CARD_TYPE,
+        CUST_BANK_CODE, CUST_ACC_NUM, CUST_ACC_NAME, CUST_AREA_CODE, CUST_BANK_LOCATION_CODE, CUST_BANK_LOCATION_NAME,
+        PRIVATE_FLAG, AMOUNT, CURRENCY, PROTOCOL_CODE, PROTOCOL_USER_CODE, CERT_TYPE, CERT_NUM, PHONE,
+        RECONCILIATION_CODE, PURPOSE, MEMO, BATCH_TO_SINGLE_FLAG, FLOW_NO, SINGLE_TRANS_VERIFY_CODE,
+        SINGLE_QUERY_VERIFY_CODE, SOURCE_NOTE, ORG_CODE, SAME_BANK_FLAG, URGENT_FLAG, SOURCE_URID, WARN_REVOKED,
+        REPEAT_CONDITION_VALUE, WARN_DATE, DETAIL_MD5, BANK_EXTEND_1, BANK_EXTEND_2, BANK_EXTEND_3, BANK_EXTEND_4,
+        BANK_EXTEND_5, BANK_RETURN_STATE, BANK_RETURN_CODE, BANK_RETURN_MSG, BANK_LOCATION_MATCH_FLAG,
+        BANK_LOCATION_MATCH_NAME, MONEY_WAY, ACCOUNTING_DATE, FG_UNIQUE_ID, MATCH_BANK_ID, MATCH_AREA_CODE,
+        BANK_DETAIL_RECONCILE, RECONCILE_FILE_RECONCILE, TOTAL_AMOUNT_RECONCILE, FAIL_BANK_DETAIL_RECONCILE,
+        FAIL_ACCOUNTING_DATE, CYCLE_DATE, FAIL_CYCLE_DATE, SUPPORT_CREDIT_FLAG, UNION_PAY_CARD_TYPE, ABS_TRACT,
+        COMPLIANCE_STATE, COMPLIANCE_INFO, OVER_LENGTH, ROW_VERSION, DECODE_AMOUNT, ACCOUNTING_FLAG, REQ_DATE,
+        BANK_RETURN_TIME, POLICY_NUM, CUST_AREA_NAME, ENCRYPT_FLAG, CONVERTED_BD_NO, RISK_CONTROL_STATE,
+        RISK_CONTROL_HIT_TYPE, IN_TIME, SEND_BANK_TIME, FAIL_RECONCILE_TYPE, LAST_QUERY_TIME, LAST_MODIFY_TIME,
+        DAY_FLOW_NO, ACCOUNTING_NO, REMAIN_QUERY_COUNT, PROTOCOL_NUM, AGREEMENT_NO, SIGN_BUS_TYPE, PRD_NAME, SIGN_TRANS,
+        MATCHED_AREA_CODE, MATCHED_BANK_LOCATION_CODE, MATCHED_BANK_LOCATION_NAME, MATCHED_CUST_BANK_CODE, REFUND_FLAG,
+        ICBC_SIGN_RESP_MSG, FG_RESULT_OUT_LIBRARY, CURRENT_BANK_RETURN_RESULT, BELONG_AREA_MATCHED,
+        BELONG_AREA_MATCH_RULE, SOURCE_BANK_RETURN_CODE, SOURCE_BANK_RETURN_MSG)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.entNum}, #{entity.batNo}, #{entity.bdNo}, #{entity.entChannelCode}, #{entity.entAccNum},
+            #{entity.cardType}, #{entity.custBankCode}, #{entity.custAccNum}, #{entity.custAccName},
+            #{entity.custAreaCode}, #{entity.custBankLocationCode}, #{entity.custBankLocationName},
+            #{entity.privateFlag}, #{entity.amount}, #{entity.currency}, #{entity.protocolCode},
+            #{entity.protocolUserCode}, #{entity.certType}, #{entity.certNum}, #{entity.phone},
+            #{entity.reconciliationCode}, #{entity.purpose}, #{entity.memo}, #{entity.batchToSingleFlag},
+            #{entity.flowNo}, #{entity.singleTransVerifyCode}, #{entity.singleQueryVerifyCode}, #{entity.sourceNote},
+            #{entity.orgCode}, #{entity.sameBankFlag}, #{entity.urgentFlag}, #{entity.sourceUrid},
+            #{entity.warnRevoked}, #{entity.repeatConditionValue}, #{entity.warnDate}, #{entity.detailMd5},
+            #{entity.bankExtend1}, #{entity.bankExtend2}, #{entity.bankExtend3}, #{entity.bankExtend4},
+            #{entity.bankExtend5}, #{entity.bankReturnState}, #{entity.bankReturnCode}, #{entity.bankReturnMsg},
+            #{entity.bankLocationMatchFlag}, #{entity.bankLocationMatchName}, #{entity.moneyWay},
+            #{entity.accountingDate}, #{entity.fgUniqueId}, #{entity.matchBankId}, #{entity.matchAreaCode},
+            #{entity.bankDetailReconcile}, #{entity.reconcileFileReconcile}, #{entity.totalAmountReconcile},
+            #{entity.failBankDetailReconcile}, #{entity.failAccountingDate}, #{entity.cycleDate},
+            #{entity.failCycleDate}, #{entity.supportCreditFlag}, #{entity.unionPayCardType}, #{entity.absTract},
+            #{entity.complianceState}, #{entity.complianceInfo}, #{entity.overLength}, #{entity.rowVersion},
+            #{entity.decodeAmount}, #{entity.accountingFlag}, #{entity.reqDate}, #{entity.bankReturnTime},
+            #{entity.policyNum}, #{entity.custAreaName}, #{entity.encryptFlag}, #{entity.convertedBdNo},
+            #{entity.riskControlState}, #{entity.riskControlHitType}, #{entity.inTime}, #{entity.sendBankTime},
+            #{entity.failReconcileType}, #{entity.lastQueryTime}, #{entity.lastModifyTime}, #{entity.dayFlowNo},
+            #{entity.accountingNo}, #{entity.remainQueryCount}, #{entity.protocolNum}, #{entity.agreementNo},
+            #{entity.signBusType}, #{entity.prdName}, #{entity.signTrans}, #{entity.matchedAreaCode},
+            #{entity.matchedBankLocationCode}, #{entity.matchedBankLocationName}, #{entity.matchedCustBankCode},
+            #{entity.refundFlag}, #{entity.icbcSignRespMsg}, #{entity.fgResultOutLibrary},
+            #{entity.currentBankReturnResult}, #{entity.belongAreaMatched}, #{entity.belongAreaMatchRule},
+            #{entity.sourceBankReturnCode}, #{entity.sourceBankReturnMsg})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="urid" useGeneratedKeys="true">
+        insert into GARDPAY_REPORT.SE_BD(ENT_NUM, BAT_NO, BD_NO, ENT_CHANNEL_CODE, ENT_ACC_NUM, CARD_TYPE,
+        CUST_BANK_CODE, CUST_ACC_NUM, CUST_ACC_NAME, CUST_AREA_CODE, CUST_BANK_LOCATION_CODE, CUST_BANK_LOCATION_NAME,
+        PRIVATE_FLAG, AMOUNT, CURRENCY, PROTOCOL_CODE, PROTOCOL_USER_CODE, CERT_TYPE, CERT_NUM, PHONE,
+        RECONCILIATION_CODE, PURPOSE, MEMO, BATCH_TO_SINGLE_FLAG, FLOW_NO, SINGLE_TRANS_VERIFY_CODE,
+        SINGLE_QUERY_VERIFY_CODE, SOURCE_NOTE, ORG_CODE, SAME_BANK_FLAG, URGENT_FLAG, SOURCE_URID, WARN_REVOKED,
+        REPEAT_CONDITION_VALUE, WARN_DATE, DETAIL_MD5, BANK_EXTEND_1, BANK_EXTEND_2, BANK_EXTEND_3, BANK_EXTEND_4,
+        BANK_EXTEND_5, BANK_RETURN_STATE, BANK_RETURN_CODE, BANK_RETURN_MSG, BANK_LOCATION_MATCH_FLAG,
+        BANK_LOCATION_MATCH_NAME, MONEY_WAY, ACCOUNTING_DATE, FG_UNIQUE_ID, MATCH_BANK_ID, MATCH_AREA_CODE,
+        BANK_DETAIL_RECONCILE, RECONCILE_FILE_RECONCILE, TOTAL_AMOUNT_RECONCILE, FAIL_BANK_DETAIL_RECONCILE,
+        FAIL_ACCOUNTING_DATE, CYCLE_DATE, FAIL_CYCLE_DATE, SUPPORT_CREDIT_FLAG, UNION_PAY_CARD_TYPE, ABS_TRACT,
+        COMPLIANCE_STATE, COMPLIANCE_INFO, OVER_LENGTH, ROW_VERSION, DECODE_AMOUNT, ACCOUNTING_FLAG, REQ_DATE,
+        BANK_RETURN_TIME, POLICY_NUM, CUST_AREA_NAME, ENCRYPT_FLAG, CONVERTED_BD_NO, RISK_CONTROL_STATE,
+        RISK_CONTROL_HIT_TYPE, IN_TIME, SEND_BANK_TIME, FAIL_RECONCILE_TYPE, LAST_QUERY_TIME, LAST_MODIFY_TIME,
+        DAY_FLOW_NO, ACCOUNTING_NO, REMAIN_QUERY_COUNT, PROTOCOL_NUM, AGREEMENT_NO, SIGN_BUS_TYPE, PRD_NAME, SIGN_TRANS,
+        MATCHED_AREA_CODE, MATCHED_BANK_LOCATION_CODE, MATCHED_BANK_LOCATION_NAME, MATCHED_CUST_BANK_CODE, REFUND_FLAG,
+        ICBC_SIGN_RESP_MSG, FG_RESULT_OUT_LIBRARY, CURRENT_BANK_RETURN_RESULT, BELONG_AREA_MATCHED,
+        BELONG_AREA_MATCH_RULE, SOURCE_BANK_RETURN_CODE, SOURCE_BANK_RETURN_MSG)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.entNum}, #{entity.batNo}, #{entity.bdNo}, #{entity.entChannelCode}, #{entity.entAccNum},
+            #{entity.cardType}, #{entity.custBankCode}, #{entity.custAccNum}, #{entity.custAccName},
+            #{entity.custAreaCode}, #{entity.custBankLocationCode}, #{entity.custBankLocationName},
+            #{entity.privateFlag}, #{entity.amount}, #{entity.currency}, #{entity.protocolCode},
+            #{entity.protocolUserCode}, #{entity.certType}, #{entity.certNum}, #{entity.phone},
+            #{entity.reconciliationCode}, #{entity.purpose}, #{entity.memo}, #{entity.batchToSingleFlag},
+            #{entity.flowNo}, #{entity.singleTransVerifyCode}, #{entity.singleQueryVerifyCode}, #{entity.sourceNote},
+            #{entity.orgCode}, #{entity.sameBankFlag}, #{entity.urgentFlag}, #{entity.sourceUrid},
+            #{entity.warnRevoked}, #{entity.repeatConditionValue}, #{entity.warnDate}, #{entity.detailMd5},
+            #{entity.bankExtend1}, #{entity.bankExtend2}, #{entity.bankExtend3}, #{entity.bankExtend4},
+            #{entity.bankExtend5}, #{entity.bankReturnState}, #{entity.bankReturnCode}, #{entity.bankReturnMsg},
+            #{entity.bankLocationMatchFlag}, #{entity.bankLocationMatchName}, #{entity.moneyWay},
+            #{entity.accountingDate}, #{entity.fgUniqueId}, #{entity.matchBankId}, #{entity.matchAreaCode},
+            #{entity.bankDetailReconcile}, #{entity.reconcileFileReconcile}, #{entity.totalAmountReconcile},
+            #{entity.failBankDetailReconcile}, #{entity.failAccountingDate}, #{entity.cycleDate},
+            #{entity.failCycleDate}, #{entity.supportCreditFlag}, #{entity.unionPayCardType}, #{entity.absTract},
+            #{entity.complianceState}, #{entity.complianceInfo}, #{entity.overLength}, #{entity.rowVersion},
+            #{entity.decodeAmount}, #{entity.accountingFlag}, #{entity.reqDate}, #{entity.bankReturnTime},
+            #{entity.policyNum}, #{entity.custAreaName}, #{entity.encryptFlag}, #{entity.convertedBdNo},
+            #{entity.riskControlState}, #{entity.riskControlHitType}, #{entity.inTime}, #{entity.sendBankTime},
+            #{entity.failReconcileType}, #{entity.lastQueryTime}, #{entity.lastModifyTime}, #{entity.dayFlowNo},
+            #{entity.accountingNo}, #{entity.remainQueryCount}, #{entity.protocolNum}, #{entity.agreementNo},
+            #{entity.signBusType}, #{entity.prdName}, #{entity.signTrans}, #{entity.matchedAreaCode},
+            #{entity.matchedBankLocationCode}, #{entity.matchedBankLocationName}, #{entity.matchedCustBankCode},
+            #{entity.refundFlag}, #{entity.icbcSignRespMsg}, #{entity.fgResultOutLibrary},
+            #{entity.currentBankReturnResult}, #{entity.belongAreaMatched}, #{entity.belongAreaMatchRule},
+            #{entity.sourceBankReturnCode}, #{entity.sourceBankReturnMsg})
+        </foreach>
+        on duplicate key update
+        ENT_NUM = values(ENT_NUM) , BAT_NO = values(BAT_NO) , BD_NO = values(BD_NO) , ENT_CHANNEL_CODE =
+        values(ENT_CHANNEL_CODE) , ENT_ACC_NUM = values(ENT_ACC_NUM) , CARD_TYPE = values(CARD_TYPE) , CUST_BANK_CODE =
+        values(CUST_BANK_CODE) , CUST_ACC_NUM = values(CUST_ACC_NUM) , CUST_ACC_NAME = values(CUST_ACC_NAME) ,
+        CUST_AREA_CODE = values(CUST_AREA_CODE) , CUST_BANK_LOCATION_CODE = values(CUST_BANK_LOCATION_CODE) ,
+        CUST_BANK_LOCATION_NAME = values(CUST_BANK_LOCATION_NAME) , PRIVATE_FLAG = values(PRIVATE_FLAG) , AMOUNT =
+        values(AMOUNT) , CURRENCY = values(CURRENCY) , PROTOCOL_CODE = values(PROTOCOL_CODE) , PROTOCOL_USER_CODE =
+        values(PROTOCOL_USER_CODE) , CERT_TYPE = values(CERT_TYPE) , CERT_NUM = values(CERT_NUM) , PHONE = values(PHONE)
+        , RECONCILIATION_CODE = values(RECONCILIATION_CODE) , PURPOSE = values(PURPOSE) , MEMO = values(MEMO) ,
+        BATCH_TO_SINGLE_FLAG = values(BATCH_TO_SINGLE_FLAG) , FLOW_NO = values(FLOW_NO) , SINGLE_TRANS_VERIFY_CODE =
+        values(SINGLE_TRANS_VERIFY_CODE) , SINGLE_QUERY_VERIFY_CODE = values(SINGLE_QUERY_VERIFY_CODE) , SOURCE_NOTE =
+        values(SOURCE_NOTE) , ORG_CODE = values(ORG_CODE) , SAME_BANK_FLAG = values(SAME_BANK_FLAG) , URGENT_FLAG =
+        values(URGENT_FLAG) , SOURCE_URID = values(SOURCE_URID) , WARN_REVOKED = values(WARN_REVOKED) ,
+        REPEAT_CONDITION_VALUE = values(REPEAT_CONDITION_VALUE) , WARN_DATE = values(WARN_DATE) , DETAIL_MD5 =
+        values(DETAIL_MD5) , BANK_EXTEND_1 = values(BANK_EXTEND_1) , BANK_EXTEND_2 = values(BANK_EXTEND_2) ,
+        BANK_EXTEND_3 = values(BANK_EXTEND_3) , BANK_EXTEND_4 = values(BANK_EXTEND_4) , BANK_EXTEND_5 =
+        values(BANK_EXTEND_5) , BANK_RETURN_STATE = values(BANK_RETURN_STATE) , BANK_RETURN_CODE =
+        values(BANK_RETURN_CODE) , BANK_RETURN_MSG = values(BANK_RETURN_MSG) , BANK_LOCATION_MATCH_FLAG =
+        values(BANK_LOCATION_MATCH_FLAG) , BANK_LOCATION_MATCH_NAME = values(BANK_LOCATION_MATCH_NAME) , MONEY_WAY =
+        values(MONEY_WAY) , ACCOUNTING_DATE = values(ACCOUNTING_DATE) , FG_UNIQUE_ID = values(FG_UNIQUE_ID) ,
+        MATCH_BANK_ID = values(MATCH_BANK_ID) , MATCH_AREA_CODE = values(MATCH_AREA_CODE) , BANK_DETAIL_RECONCILE =
+        values(BANK_DETAIL_RECONCILE) , RECONCILE_FILE_RECONCILE = values(RECONCILE_FILE_RECONCILE) ,
+        TOTAL_AMOUNT_RECONCILE = values(TOTAL_AMOUNT_RECONCILE) , FAIL_BANK_DETAIL_RECONCILE =
+        values(FAIL_BANK_DETAIL_RECONCILE) , FAIL_ACCOUNTING_DATE = values(FAIL_ACCOUNTING_DATE) , CYCLE_DATE =
+        values(CYCLE_DATE) , FAIL_CYCLE_DATE = values(FAIL_CYCLE_DATE) , SUPPORT_CREDIT_FLAG =
+        values(SUPPORT_CREDIT_FLAG) , UNION_PAY_CARD_TYPE = values(UNION_PAY_CARD_TYPE) , ABS_TRACT = values(ABS_TRACT)
+        , COMPLIANCE_STATE = values(COMPLIANCE_STATE) , COMPLIANCE_INFO = values(COMPLIANCE_INFO) , OVER_LENGTH =
+        values(OVER_LENGTH) , ROW_VERSION = values(ROW_VERSION) , DECODE_AMOUNT = values(DECODE_AMOUNT) ,
+        ACCOUNTING_FLAG = values(ACCOUNTING_FLAG) , REQ_DATE = values(REQ_DATE) , BANK_RETURN_TIME =
+        values(BANK_RETURN_TIME) , POLICY_NUM = values(POLICY_NUM) , CUST_AREA_NAME = values(CUST_AREA_NAME) ,
+        ENCRYPT_FLAG = values(ENCRYPT_FLAG) , CONVERTED_BD_NO = values(CONVERTED_BD_NO) , RISK_CONTROL_STATE =
+        values(RISK_CONTROL_STATE) , RISK_CONTROL_HIT_TYPE = values(RISK_CONTROL_HIT_TYPE) , IN_TIME = values(IN_TIME) ,
+        SEND_BANK_TIME = values(SEND_BANK_TIME) , FAIL_RECONCILE_TYPE = values(FAIL_RECONCILE_TYPE) , LAST_QUERY_TIME =
+        values(LAST_QUERY_TIME) , LAST_MODIFY_TIME = values(LAST_MODIFY_TIME) , DAY_FLOW_NO = values(DAY_FLOW_NO) ,
+        ACCOUNTING_NO = values(ACCOUNTING_NO) , REMAIN_QUERY_COUNT = values(REMAIN_QUERY_COUNT) , PROTOCOL_NUM =
+        values(PROTOCOL_NUM) , AGREEMENT_NO = values(AGREEMENT_NO) , SIGN_BUS_TYPE = values(SIGN_BUS_TYPE) , PRD_NAME =
+        values(PRD_NAME) , SIGN_TRANS = values(SIGN_TRANS) , MATCHED_AREA_CODE = values(MATCHED_AREA_CODE) ,
+        MATCHED_BANK_LOCATION_CODE = values(MATCHED_BANK_LOCATION_CODE) , MATCHED_BANK_LOCATION_NAME =
+        values(MATCHED_BANK_LOCATION_NAME) , MATCHED_CUST_BANK_CODE = values(MATCHED_CUST_BANK_CODE) , REFUND_FLAG =
+        values(REFUND_FLAG) , ICBC_SIGN_RESP_MSG = values(ICBC_SIGN_RESP_MSG) , FG_RESULT_OUT_LIBRARY =
+        values(FG_RESULT_OUT_LIBRARY) , CURRENT_BANK_RETURN_RESULT = values(CURRENT_BANK_RETURN_RESULT) ,
+        BELONG_AREA_MATCHED = values(BELONG_AREA_MATCHED) , BELONG_AREA_MATCH_RULE = values(BELONG_AREA_MATCH_RULE) ,
+        SOURCE_BANK_RETURN_CODE = values(SOURCE_BANK_RETURN_CODE) , SOURCE_BANK_RETURN_MSG =
+        values(SOURCE_BANK_RETURN_MSG)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update GARDPAY_REPORT.SE_BD
+        <set>
+            <if test="entNum != null and entNum != ''">
+                ENT_NUM = #{entNum},
+            </if>
+            <if test="batNo != null and batNo != ''">
+                BAT_NO = #{batNo},
+            </if>
+            <if test="bdNo != null and bdNo != ''">
+                BD_NO = #{bdNo},
+            </if>
+            <if test="entChannelCode != null and entChannelCode != ''">
+                ENT_CHANNEL_CODE = #{entChannelCode},
+            </if>
+            <if test="entAccNum != null and entAccNum != ''">
+                ENT_ACC_NUM = #{entAccNum},
+            </if>
+            <if test="cardType != null and cardType != ''">
+                CARD_TYPE = #{cardType},
+            </if>
+            <if test="custBankCode != null and custBankCode != ''">
+                CUST_BANK_CODE = #{custBankCode},
+            </if>
+            <if test="custAccNum != null and custAccNum != ''">
+                CUST_ACC_NUM = #{custAccNum},
+            </if>
+            <if test="custAccName != null and custAccName != ''">
+                CUST_ACC_NAME = #{custAccName},
+            </if>
+            <if test="custAreaCode != null and custAreaCode != ''">
+                CUST_AREA_CODE = #{custAreaCode},
+            </if>
+            <if test="custBankLocationCode != null and custBankLocationCode != ''">
+                CUST_BANK_LOCATION_CODE = #{custBankLocationCode},
+            </if>
+            <if test="custBankLocationName != null and custBankLocationName != ''">
+                CUST_BANK_LOCATION_NAME = #{custBankLocationName},
+            </if>
+            <if test="privateFlag != null and privateFlag != ''">
+                PRIVATE_FLAG = #{privateFlag},
+            </if>
+            <if test="amount != null and amount != ''">
+                AMOUNT = #{amount},
+            </if>
+            <if test="currency != null and currency != ''">
+                CURRENCY = #{currency},
+            </if>
+            <if test="protocolCode != null and protocolCode != ''">
+                PROTOCOL_CODE = #{protocolCode},
+            </if>
+            <if test="protocolUserCode != null and protocolUserCode != ''">
+                PROTOCOL_USER_CODE = #{protocolUserCode},
+            </if>
+            <if test="certType != null and certType != ''">
+                CERT_TYPE = #{certType},
+            </if>
+            <if test="certNum != null and certNum != ''">
+                CERT_NUM = #{certNum},
+            </if>
+            <if test="phone != null and phone != ''">
+                PHONE = #{phone},
+            </if>
+            <if test="reconciliationCode != null and reconciliationCode != ''">
+                RECONCILIATION_CODE = #{reconciliationCode},
+            </if>
+            <if test="purpose != null and purpose != ''">
+                PURPOSE = #{purpose},
+            </if>
+            <if test="memo != null and memo != ''">
+                MEMO = #{memo},
+            </if>
+            <if test="batchToSingleFlag != null and batchToSingleFlag != ''">
+                BATCH_TO_SINGLE_FLAG = #{batchToSingleFlag},
+            </if>
+            <if test="flowNo != null and flowNo != ''">
+                FLOW_NO = #{flowNo},
+            </if>
+            <if test="singleTransVerifyCode != null and singleTransVerifyCode != ''">
+                SINGLE_TRANS_VERIFY_CODE = #{singleTransVerifyCode},
+            </if>
+            <if test="singleQueryVerifyCode != null and singleQueryVerifyCode != ''">
+                SINGLE_QUERY_VERIFY_CODE = #{singleQueryVerifyCode},
+            </if>
+            <if test="sourceNote != null and sourceNote != ''">
+                SOURCE_NOTE = #{sourceNote},
+            </if>
+            <if test="orgCode != null and orgCode != ''">
+                ORG_CODE = #{orgCode},
+            </if>
+            <if test="sameBankFlag != null and sameBankFlag != ''">
+                SAME_BANK_FLAG = #{sameBankFlag},
+            </if>
+            <if test="urgentFlag != null and urgentFlag != ''">
+                URGENT_FLAG = #{urgentFlag},
+            </if>
+            <if test="sourceUrid != null and sourceUrid != ''">
+                SOURCE_URID = #{sourceUrid},
+            </if>
+            <if test="warnRevoked != null and warnRevoked != ''">
+                WARN_REVOKED = #{warnRevoked},
+            </if>
+            <if test="repeatConditionValue != null and repeatConditionValue != ''">
+                REPEAT_CONDITION_VALUE = #{repeatConditionValue},
+            </if>
+            <if test="warnDate != null and warnDate != ''">
+                WARN_DATE = #{warnDate},
+            </if>
+            <if test="detailMd5 != null and detailMd5 != ''">
+                DETAIL_MD5 = #{detailMd5},
+            </if>
+            <if test="bankExtend1 != null and bankExtend1 != ''">
+                BANK_EXTEND_1 = #{bankExtend1},
+            </if>
+            <if test="bankExtend2 != null and bankExtend2 != ''">
+                BANK_EXTEND_2 = #{bankExtend2},
+            </if>
+            <if test="bankExtend3 != null and bankExtend3 != ''">
+                BANK_EXTEND_3 = #{bankExtend3},
+            </if>
+            <if test="bankExtend4 != null and bankExtend4 != ''">
+                BANK_EXTEND_4 = #{bankExtend4},
+            </if>
+            <if test="bankExtend5 != null and bankExtend5 != ''">
+                BANK_EXTEND_5 = #{bankExtend5},
+            </if>
+            <if test="bankReturnState != null and bankReturnState != ''">
+                BANK_RETURN_STATE = #{bankReturnState},
+            </if>
+            <if test="bankReturnCode != null and bankReturnCode != ''">
+                BANK_RETURN_CODE = #{bankReturnCode},
+            </if>
+            <if test="bankReturnMsg != null and bankReturnMsg != ''">
+                BANK_RETURN_MSG = #{bankReturnMsg},
+            </if>
+            <if test="bankLocationMatchFlag != null">
+                BANK_LOCATION_MATCH_FLAG = #{bankLocationMatchFlag},
+            </if>
+            <if test="bankLocationMatchName != null and bankLocationMatchName != ''">
+                BANK_LOCATION_MATCH_NAME = #{bankLocationMatchName},
+            </if>
+            <if test="moneyWay != null and moneyWay != ''">
+                MONEY_WAY = #{moneyWay},
+            </if>
+            <if test="accountingDate != null and accountingDate != ''">
+                ACCOUNTING_DATE = #{accountingDate},
+            </if>
+            <if test="fgUniqueId != null and fgUniqueId != ''">
+                FG_UNIQUE_ID = #{fgUniqueId},
+            </if>
+            <if test="matchBankId != null and matchBankId != ''">
+                MATCH_BANK_ID = #{matchBankId},
+            </if>
+            <if test="matchAreaCode != null and matchAreaCode != ''">
+                MATCH_AREA_CODE = #{matchAreaCode},
+            </if>
+            <if test="bankDetailReconcile != null and bankDetailReconcile != ''">
+                BANK_DETAIL_RECONCILE = #{bankDetailReconcile},
+            </if>
+            <if test="reconcileFileReconcile != null and reconcileFileReconcile != ''">
+                RECONCILE_FILE_RECONCILE = #{reconcileFileReconcile},
+            </if>
+            <if test="totalAmountReconcile != null and totalAmountReconcile != ''">
+                TOTAL_AMOUNT_RECONCILE = #{totalAmountReconcile},
+            </if>
+            <if test="failBankDetailReconcile != null and failBankDetailReconcile != ''">
+                FAIL_BANK_DETAIL_RECONCILE = #{failBankDetailReconcile},
+            </if>
+            <if test="failAccountingDate != null and failAccountingDate != ''">
+                FAIL_ACCOUNTING_DATE = #{failAccountingDate},
+            </if>
+            <if test="cycleDate != null">
+                CYCLE_DATE = #{cycleDate},
+            </if>
+            <if test="failCycleDate != null">
+                FAIL_CYCLE_DATE = #{failCycleDate},
+            </if>
+            <if test="supportCreditFlag != null and supportCreditFlag != ''">
+                SUPPORT_CREDIT_FLAG = #{supportCreditFlag},
+            </if>
+            <if test="unionPayCardType != null and unionPayCardType != ''">
+                UNION_PAY_CARD_TYPE = #{unionPayCardType},
+            </if>
+            <if test="absTract != null and absTract != ''">
+                ABS_TRACT = #{absTract},
+            </if>
+            <if test="complianceState != null and complianceState != ''">
+                COMPLIANCE_STATE = #{complianceState},
+            </if>
+            <if test="complianceInfo != null and complianceInfo != ''">
+                COMPLIANCE_INFO = #{complianceInfo},
+            </if>
+            <if test="overLength != null and overLength != ''">
+                OVER_LENGTH = #{overLength},
+            </if>
+            <if test="rowVersion != null">
+                ROW_VERSION = #{rowVersion},
+            </if>
+            <if test="decodeAmount != null">
+                DECODE_AMOUNT = #{decodeAmount},
+            </if>
+            <if test="accountingFlag != null and accountingFlag != ''">
+                ACCOUNTING_FLAG = #{accountingFlag},
+            </if>
+            <if test="reqDate != null">
+                REQ_DATE = #{reqDate},
+            </if>
+            <if test="bankReturnTime != null">
+                BANK_RETURN_TIME = #{bankReturnTime},
+            </if>
+            <if test="policyNum != null and policyNum != ''">
+                POLICY_NUM = #{policyNum},
+            </if>
+            <if test="custAreaName != null and custAreaName != ''">
+                CUST_AREA_NAME = #{custAreaName},
+            </if>
+            <if test="encryptFlag != null and encryptFlag != ''">
+                ENCRYPT_FLAG = #{encryptFlag},
+            </if>
+            <if test="convertedBdNo != null and convertedBdNo != ''">
+                CONVERTED_BD_NO = #{convertedBdNo},
+            </if>
+            <if test="riskControlState != null and riskControlState != ''">
+                RISK_CONTROL_STATE = #{riskControlState},
+            </if>
+            <if test="riskControlHitType != null and riskControlHitType != ''">
+                RISK_CONTROL_HIT_TYPE = #{riskControlHitType},
+            </if>
+            <if test="inTime != null">
+                IN_TIME = #{inTime},
+            </if>
+            <if test="sendBankTime != null">
+                SEND_BANK_TIME = #{sendBankTime},
+            </if>
+            <if test="failReconcileType != null and failReconcileType != ''">
+                FAIL_RECONCILE_TYPE = #{failReconcileType},
+            </if>
+            <if test="lastQueryTime != null">
+                LAST_QUERY_TIME = #{lastQueryTime},
+            </if>
+            <if test="lastModifyTime != null">
+                LAST_MODIFY_TIME = #{lastModifyTime},
+            </if>
+            <if test="dayFlowNo != null and dayFlowNo != ''">
+                DAY_FLOW_NO = #{dayFlowNo},
+            </if>
+            <if test="accountingNo != null and accountingNo != ''">
+                ACCOUNTING_NO = #{accountingNo},
+            </if>
+            <if test="remainQueryCount != null">
+                REMAIN_QUERY_COUNT = #{remainQueryCount},
+            </if>
+            <if test="protocolNum != null and protocolNum != ''">
+                PROTOCOL_NUM = #{protocolNum},
+            </if>
+            <if test="agreementNo != null and agreementNo != ''">
+                AGREEMENT_NO = #{agreementNo},
+            </if>
+            <if test="signBusType != null and signBusType != ''">
+                SIGN_BUS_TYPE = #{signBusType},
+            </if>
+            <if test="prdName != null and prdName != ''">
+                PRD_NAME = #{prdName},
+            </if>
+            <if test="signTrans != null and signTrans != ''">
+                SIGN_TRANS = #{signTrans},
+            </if>
+            <if test="matchedAreaCode != null and matchedAreaCode != ''">
+                MATCHED_AREA_CODE = #{matchedAreaCode},
+            </if>
+            <if test="matchedBankLocationCode != null and matchedBankLocationCode != ''">
+                MATCHED_BANK_LOCATION_CODE = #{matchedBankLocationCode},
+            </if>
+            <if test="matchedBankLocationName != null and matchedBankLocationName != ''">
+                MATCHED_BANK_LOCATION_NAME = #{matchedBankLocationName},
+            </if>
+            <if test="matchedCustBankCode != null and matchedCustBankCode != ''">
+                MATCHED_CUST_BANK_CODE = #{matchedCustBankCode},
+            </if>
+            <if test="refundFlag != null and refundFlag != ''">
+                REFUND_FLAG = #{refundFlag},
+            </if>
+            <if test="icbcSignRespMsg != null and icbcSignRespMsg != ''">
+                ICBC_SIGN_RESP_MSG = #{icbcSignRespMsg},
+            </if>
+            <if test="fgResultOutLibrary != null and fgResultOutLibrary != ''">
+                FG_RESULT_OUT_LIBRARY = #{fgResultOutLibrary},
+            </if>
+            <if test="currentBankReturnResult != null and currentBankReturnResult != ''">
+                CURRENT_BANK_RETURN_RESULT = #{currentBankReturnResult},
+            </if>
+            <if test="belongAreaMatched != null and belongAreaMatched != ''">
+                BELONG_AREA_MATCHED = #{belongAreaMatched},
+            </if>
+            <if test="belongAreaMatchRule != null and belongAreaMatchRule != ''">
+                BELONG_AREA_MATCH_RULE = #{belongAreaMatchRule},
+            </if>
+            <if test="sourceBankReturnCode != null and sourceBankReturnCode != ''">
+                SOURCE_BANK_RETURN_CODE = #{sourceBankReturnCode},
+            </if>
+            <if test="sourceBankReturnMsg != null and sourceBankReturnMsg != ''">
+                SOURCE_BANK_RETURN_MSG = #{sourceBankReturnMsg},
+            </if>
+        </set>
+        where URID = #{urid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from GARDPAY_REPORT.SE_BD
+        where URID = #{urid}
+    </delete>
+
+</mapper>
+

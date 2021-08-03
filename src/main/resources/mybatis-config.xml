@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties>
+        <property name="databaseSchema" value="${@com.fingard.gardpay.common.dbroute.DatabaseRoute@getSchema()}"/>
+        <property name="databaseSchemaByTenantId" value="${@com.fingard.gardpay.common.dbroute.DatabaseRoute@convertTenantIdToSchema(tenantId)}"/>
+        <property name="databaseDblink" value="${@com.fingard.gardpay.common.dbroute.DatabaseRoute@getDblink()}"/>
+        <property name="databaseDblinkByTenantId" value="${@com.fingard.gardpay.common.dbroute.DatabaseRoute@convertTenantIdToDblink(tenantId)}"/>
+    </properties>
+    <settings>
+        <setting name="jdbcTypeForNull" value="NULL"/>
+        <setting name="logImpl" value="SLF4J"/>
+        <!--当所有列都为空的时候返回空示例而不是空对象-->
+        <setting name="returnInstanceForEmptyRow" value="true"/>
+    </settings>
+
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+<!--            &lt;!&ndash; 指定分页插件使用Oracle方言 &ndash;&gt;-->
+<!--            <property name="helperDialect" value="oracle"/>-->
+            <property name="autoRuntimeDialect" value="true"/>
+        </plugin>
+    </plugins>
+</configuration>

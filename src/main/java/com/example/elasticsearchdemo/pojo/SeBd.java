@@ -1,5 +1,10 @@
 package com.example.elasticsearchdemo.pojo;
 
+import lombok.Data;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,209 +14,312 @@ import java.util.Date;
  * @author makejava
  * @since 2021-07-27 19:19:49
  */
+@Data
+@Document(indexName = "#{@esIndexNameConfig.seBd}")
 public class SeBd extends EsBasePO implements Serializable {
     private static final long serialVersionUID = 409615730106062576L;
 
+    @Field(type = FieldType.Keyword)
     private Integer urid;
 
+    @Field(type = FieldType.Keyword)
     private String entNum;
 
+    @Field(type = FieldType.Keyword)
     private String batNo;
 
+    @Field(type = FieldType.Keyword)
     private String bdNo;
 
+    @Field(type = FieldType.Keyword)
     private String entChannelCode;
 
+    @Field(type = FieldType.Text)
     private String entAccNum;
 
+    @Field(type = FieldType.Keyword)
     private String cardType;
 
+    @Field(type = FieldType.Keyword)
     private String custBankCode;
 
+    @Field(type = FieldType.Text)
     private String custAccNum;
 
+    @Field(type = FieldType.Text)
     private String custAccName;
 
+    @Field(type = FieldType.Text)
     private String custAreaCode;
 
+    @Field(type = FieldType.Text)
     private String custBankLocationCode;
 
+    @Field(type = FieldType.Text)
     private String custBankLocationName;
 
+    @Field(type = FieldType.Keyword)
     private String privateFlag;
 
+    @Field(type = FieldType.Text)
     private String amount;
 
+    @Field(type = FieldType.Keyword)
     private String currency;
 
+    @Field(type = FieldType.Keyword)
     private String protocolCode;
 
+    @Field(type = FieldType.Keyword)
     private String protocolUserCode;
 
+    @Field(type = FieldType.Keyword)
     private String certType;
 
+    @Field(type = FieldType.Text)
     private String certNum;
 
+    @Field(type = FieldType.Keyword)
     private String phone;
 
+    @Field(type = FieldType.Keyword)
     private String reconciliationCode;
 
+    @Field(type = FieldType.Text)
     private String purpose;
 
+    @Field(type = FieldType.Text)
     private String memo;
 
+    @Field(type = FieldType.Keyword)
     private String batchToSingleFlag;
 
+    @Field(type = FieldType.Keyword)
     private String flowNo;
 
+    @Field(type = FieldType.Keyword)
     private String singleTransVerifyCode;
 
+    @Field(type = FieldType.Keyword)
     private String singleQueryVerifyCode;
 
+    @Field(type = FieldType.Text)
     private String sourceNote;
 
+    @Field(type = FieldType.Text)
     private String orgCode;
 
+    @Field(type = FieldType.Keyword)
     private String sameBankFlag;
 
+    @Field(type = FieldType.Keyword)
     private String urgentFlag;
 
+    @Field(type = FieldType.Keyword)
     private String sourceUrid;
 
+    @Field(type = FieldType.Text)
     private String warnRevoked;
 
+    @Field(type = FieldType.Text)
     private String repeatConditionValue;
 
+    @Field(type = FieldType.Text)
     private String warnDate;
 
+    @Field(type = FieldType.Text)
     private String detailMd5;
 
+    @Field(type = FieldType.Text)
     private String bankExtend1;
 
+    @Field(type = FieldType.Text)
     private String bankExtend2;
 
+    @Field(type = FieldType.Text)
     private String bankExtend3;
 
+    @Field(type = FieldType.Text)
     private String bankExtend4;
 
+    @Field(type = FieldType.Text)
     private String bankExtend5;
 
+    @Field(type = FieldType.Keyword)
     private String bankReturnState;
 
+    @Field(type = FieldType.Text)
     private String bankReturnCode;
 
+    @Field(type = FieldType.Text)
     private String bankReturnMsg;
 
+    @Field(type = FieldType.Short)
     private Integer bankLocationMatchFlag;
 
+    @Field(type = FieldType.Text)
     private String bankLocationMatchName;
 
+    @Field(type = FieldType.Keyword)
     private String moneyWay;
 
+    @Field(type = FieldType.Text)
     private String accountingDate;
 
+    @Field(type = FieldType.Keyword)
     private String fgUniqueId;
 
+    @Field(type = FieldType.Text)
     private String matchBankId;
 
+    @Field(type = FieldType.Text)
     private String matchAreaCode;
 
+    @Field(type = FieldType.Text)
     private String bankDetailReconcile;
 
+    @Field(type = FieldType.Text)
     private String reconcileFileReconcile;
 
+    @Field(type = FieldType.Text)
     private String totalAmountReconcile;
 
+    @Field(type = FieldType.Text)
     private String failBankDetailReconcile;
 
+    @Field(type = FieldType.Text)
     private String failAccountingDate;
 
+    @Field(type = FieldType.Date)
     private Date cycleDate;
 
+    @Field(type = FieldType.Date)
     private Date failCycleDate;
 
+    @Field(type = FieldType.Text)
     private String supportCreditFlag;
 
+    @Field(type = FieldType.Text)
     private String unionPayCardType;
 
+    @Field(type = FieldType.Text)
     private String absTract;
 
+    @Field(type = FieldType.Text)
     private String complianceState;
 
+    @Field(type = FieldType.Text)
     private String complianceInfo;
 
+    @Field(type = FieldType.Text)
     private String overLength;
 
+    @Field(type = FieldType.Long)
     private Integer rowVersion;
 
+    @Field(type = FieldType.Double)
     private Double decodeAmount;
 
+    @Field(type = FieldType.Keyword)
     private String accountingFlag;
 
+    @Field(type = FieldType.Date)
     private Date reqDate;
 
+    @Field(type = FieldType.Date)
     private Date bankReturnTime;
 
+    @Field(type = FieldType.Text)
     private String policyNum;
 
+    @Field(type = FieldType.Text)
     private String custAreaName;
 
+    @Field(type = FieldType.Keyword)
     private String encryptFlag;
 
+    @Field(type = FieldType.Text)
     private String convertedBdNo;
 
+    @Field(type = FieldType.Keyword)
     private String riskControlState;
 
+    @Field(type = FieldType.Keyword)
     private String riskControlHitType;
 
+    @Field(type = FieldType.Date)
     private Date inTime;
 
+    @Field(type = FieldType.Date)
     private Date sendBankTime;
 
+    @Field(type = FieldType.Text)
     private String failReconcileType;
 
+    @Field(type = FieldType.Date)
     private Date lastQueryTime;
 
+    @Field(type = FieldType.Date)
     private Date lastModifyTime;
 
+    @Field(type = FieldType.Text)
     private String dayFlowNo;
 
+    @Field(type = FieldType.Text)
     private String accountingNo;
 
+    @Field(type = FieldType.Integer)
     private Integer remainQueryCount;
 
+    @Field(type = FieldType.Text)
     private String protocolNum;
 
+    @Field(type = FieldType.Text)
     private String agreementNo;
 
+    @Field(type = FieldType.Keyword)
     private String signBusType;
 
+    @Field(type = FieldType.Text)
     private String prdName;
 
+    @Field(type = FieldType.Keyword)
     private String signTrans;
 
+    @Field(type = FieldType.Text)
     private String matchedAreaCode;
 
+    @Field(type = FieldType.Text)
     private String matchedBankLocationCode;
 
+    @Field(type = FieldType.Text)
     private String matchedBankLocationName;
 
+    @Field(type = FieldType.Text)
     private String matchedCustBankCode;
 
+    @Field(type = FieldType.Keyword)
     private String refundFlag;
 
+    @Field(type = FieldType.Text)
     private String icbcSignRespMsg;
 
+    @Field(type = FieldType.Text)
     private String fgResultOutLibrary;
 
+    @Field(type = FieldType.Text)
     private String currentBankReturnResult;
 
+    @Field(type = FieldType.Text)
     private String belongAreaMatched;
 
+    @Field(type = FieldType.Text)
     private String belongAreaMatchRule;
 
+    @Field(type = FieldType.Text)
     private String sourceBankReturnCode;
 
+    @Field(type = FieldType.Text)
     private String sourceBankReturnMsg;
 
 

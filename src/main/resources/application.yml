@@ -1,2 +1,6 @@
 server:
   port: 8999
+elasticsearch:
+  indexName:
+    esPerson: es_person
+    seBd: se_bd

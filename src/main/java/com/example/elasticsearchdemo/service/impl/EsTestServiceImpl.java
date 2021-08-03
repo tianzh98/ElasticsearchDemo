@@ -1,17 +1,19 @@
 package com.example.elasticsearchdemo.service.impl;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Date;
-import java.util.Iterator;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 import com.example.elasticsearchdemo.common.enums.ENEsIndex;
 import com.example.elasticsearchdemo.common.utils.EsRestApiUtil;
+import com.example.elasticsearchdemo.dao.SeBdDao;
+import com.example.elasticsearchdemo.esRepository.PersonRepository;
 import com.example.elasticsearchdemo.pojo.Person;
 import com.example.elasticsearchdemo.pojo.SeBd;
 import com.example.elasticsearchdemo.service.EsTestService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.delete.DeleteRequest;
 import org.elasticsearch.action.search.MultiSearchRequest;
 import org.elasticsearch.action.search.MultiSearchResponse;
@@ -19,6 +21,9 @@ import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.client.indices.CreateIndexRequest;
+import org.elasticsearch.client.indices.CreateIndexResponse;
+import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.unit.Fuzziness;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.index.query.BoolQueryBuilder;
@@ -46,11 +51,14 @@ import org.springframework.stereotype.Service;
 public class EsTestServiceImpl implements EsTestService {
     @Autowired
     RestHighLevelClient highLevelClient;
+    @Autowired
+    private SeBdDao seBdDao;
+    @Autowired
+    PersonRepository personRepository;
 
     @Override
     public void testEsRestDeleteApi() {
         try {
-
             DeleteByQueryRequest request = new DeleteByQueryRequest(ENEsIndex.INDEX_PERSON_ES_TEST.getValue());
             request.setQuery(QueryBuilders.matchQuery("name", "田")
                     // 启动模糊查询
@@ -133,7 +141,7 @@ public class EsTestServiceImpl implements EsTestService {
             MultiSearchResponse msearchResponse = highLevelClient.msearch(multiSearchRequest, RequestOptions.DEFAULT);
 
             // TODO 这个方法其实还是分词查询
-            msearchResponse.forEach(t->{
+            msearchResponse.forEach(t -> {
                 SearchResponse resp = t.getResponse();
 
                 Arrays.stream(resp.getHits().getHits())
@@ -152,7 +160,7 @@ public class EsTestServiceImpl implements EsTestService {
     @Override
     public void testBoolQuery() {
         try {
-            BoolQueryBuilder boolQueryBuilder =  QueryBuilders
+            BoolQueryBuilder boolQueryBuilder = QueryBuilders
                     .boolQuery()
                     .must(QueryBuilders.matchQuery("name", "张三"))
                     .must(QueryBuilders.matchQuery("age", 20))
@@ -185,9 +193,59 @@ public class EsTestServiceImpl implements EsTestService {
 
     @Override
     public void testEsRestCreateIndexApi() {
+        try {
+            CreateIndexRequest createIndexRequest = new CreateIndexRequest(ENEsIndex.INDEX_PERSON_ES_TEST.getValue());
+            // 设置索引的settings
+            createIndexRequest.settings(Settings.builder()
+                    // 分片数
+                    .put("index.number_of_shards", 3)
+                    // 副本数
+                    .put("index.number_of_replicas", 3)
+                    // 默认分词器
+                    .put("analysis.analyzer.default.tokenizer", "ik_max_word"));
 
+            CreateIndexResponse createIndexResponse =
+                    highLevelClient.indices().create(createIndexRequest, RequestOptions.DEFAULT);
+            boolean acknowledged = createIndexResponse.isAcknowledged();
+            boolean shardsAcknowledged = createIndexResponse.isShardsAcknowledged();
+            System.out.println("acknowledged = " + acknowledged);
+            System.out.println("shardsAcknowledged = " + shardsAcknowledged);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+    @Override
+    public void insertSebdToEs() {
+        try {
+            int oneSelect = 10000;
+            int num = 1;
+            PageInfo<SeBd> seBdPageInfo = this.pageSelect(num, oneSelect);
+            if (seBdPageInfo.getList().size()> 0) {
+                BulkRequest bulkRequest = new BulkRequest();
+                seBdPageInfo.getList().forEach(x ->
+                        bulkRequest.add(EsRestApiUtil.createIndexRequest(x, ENEsIndex.INDEX_SE_BD.getValue())));
+               // 它还没写完  下一次操作就来了
+                highLevelClient.bulk(bulkRequest, RequestOptions.DEFAULT);
+            }
+
+            int pages = seBdPageInfo.getPages();
+            for (int i = 2 ; i <= pages; i++) {
+                seBdPageInfo = this.pageSelect(i, oneSelect);
+                BulkRequest bulkRequest = new BulkRequest();
+                seBdPageInfo.getList().forEach(x ->
+                        bulkRequest.add(EsRestApiUtil.createIndexRequest(x, ENEsIndex.INDEX_SE_BD.getValue())));
+                highLevelClient.bulk(bulkRequest, RequestOptions.DEFAULT);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private PageInfo<SeBd> pageSelect(int num, int size) {
+        PageHelper.startPage(num, size);
+        return new PageInfo<>(seBdDao.selectAll());
+    }
     @Override
     public void testEsRestIndexApi() {
         try {

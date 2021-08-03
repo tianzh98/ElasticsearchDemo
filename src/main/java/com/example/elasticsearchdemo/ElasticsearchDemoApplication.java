@@ -4,10 +4,13 @@ import com.example.elasticsearchdemo.service.EsTestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.annotation.PostConstruct;
 
 @SpringBootApplication
+@EnableTransactionManagement
 public class ElasticsearchDemoApplication {
 
     @Autowired
@@ -26,7 +29,9 @@ public class ElasticsearchDemoApplication {
 
 //        esTestService.testEsRestUpdateApi();
 //        esTestService.testEsMSearch();
-        esTestService.testBoolQuery();
+//        esTestService.testBoolQuery();
+
+        esTestService.insertSebdToEs();
     }
 
 }

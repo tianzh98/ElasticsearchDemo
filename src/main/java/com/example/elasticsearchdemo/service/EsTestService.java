@@ -19,4 +19,6 @@ public interface EsTestService {
     void testEsRestCreateIndexApi();
 
     void testBoolQuery();
+
+    void insertSebdToEs();
 }
