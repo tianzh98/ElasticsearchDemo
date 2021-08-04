@@ -19,6 +19,8 @@ import java.io.Serializable;
 public class Person extends EsBasePO implements Serializable {
     private static final long serialVersionUID = 1828760928850240542L;
 
+    @Id
+    private String id;
     @Field(type = FieldType.Keyword)
     private String name;
     /**

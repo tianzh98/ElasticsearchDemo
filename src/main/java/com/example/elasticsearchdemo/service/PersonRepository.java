@@ -1,4 +1,4 @@
-package com.example.elasticsearchdemo.esRepository;
+package com.example.elasticsearchdemo.service;
 
 import com.example.elasticsearchdemo.pojo.Person;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
@@ -9,6 +9,8 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
  * @author tianzh
  * @date 2021/08/02
  */
-public interface PersonRepository extends ElasticsearchRepository<Person,String> {
+public interface PersonRepository
+//        extends ElasticsearchRepository<Person,String>
+{
 
 }

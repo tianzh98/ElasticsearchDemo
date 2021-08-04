@@ -18,7 +18,6 @@ public class EsBasePO implements Serializable {
     /**
      * 文档的唯一id  UUID, 不当作document的一部分 不参与json转化
      */
-    @Id
     private transient String esId;
 
     /**

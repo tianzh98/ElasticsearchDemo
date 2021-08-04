@@ -4,6 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import com.example.elasticsearchdemo.common.enums.ENEsIndex;
 import com.example.elasticsearchdemo.pojo.EsBasePO;
+import com.example.elasticsearchdemo.pojo.SeBd;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.common.unit.Fuzziness;
@@ -41,11 +42,24 @@ public class EsRestApiUtil {
             throw new RuntimeException("indexName缺失");
         }
         // 唯一id会在EsBasePO构造函数执行时自动生成
-        indexRequest.id(document.getEsId());
+//        indexRequest.id(document.getEsId());
         indexRequest.source(JSONUtil.parseObj(document), XContentType.JSON);
         return indexRequest;
     }
-
+    public static IndexRequest createSeBdIndexRequest(SeBd document, String indexName) {
+        IndexRequest indexRequest;
+        if (StrUtil.isNotEmpty(indexName)) {
+            indexRequest = new IndexRequest(indexName);
+        } else if (StrUtil.isNotEmpty(document.getIndexName())) {
+            indexRequest = new IndexRequest(document.getIndexName());
+        } else {
+            throw new RuntimeException("indexName缺失");
+        }
+        // 唯一id会在EsBasePO构造函数执行时自动生成
+        indexRequest.id(document.getUrid().toString());
+        indexRequest.source(JSONUtil.parseObj(document), XContentType.JSON);
+        return indexRequest;
+    }
 
     public static SearchRequest createFuzzinessSearchRequest(String name, Object text, String... indices) {
         // 查询对象

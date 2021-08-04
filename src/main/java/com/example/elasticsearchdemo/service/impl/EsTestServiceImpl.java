@@ -7,14 +7,13 @@ import java.util.concurrent.TimeUnit;
 import com.example.elasticsearchdemo.common.enums.ENEsIndex;
 import com.example.elasticsearchdemo.common.utils.EsRestApiUtil;
 import com.example.elasticsearchdemo.dao.SeBdDao;
-import com.example.elasticsearchdemo.esRepository.PersonRepository;
+import com.example.elasticsearchdemo.service.PersonRepository;
 import com.example.elasticsearchdemo.pojo.Person;
 import com.example.elasticsearchdemo.pojo.SeBd;
 import com.example.elasticsearchdemo.service.EsTestService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.elasticsearch.action.bulk.BulkRequest;
-import org.elasticsearch.action.delete.DeleteRequest;
 import org.elasticsearch.action.search.MultiSearchRequest;
 import org.elasticsearch.action.search.MultiSearchResponse;
 import org.elasticsearch.action.search.SearchRequest;
@@ -27,7 +26,6 @@ import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.unit.Fuzziness;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.index.query.BoolQueryBuilder;
-import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.reindex.BulkByScrollResponse;
 import org.elasticsearch.index.reindex.DeleteByQueryRequest;
@@ -37,7 +35,6 @@ import org.elasticsearch.script.ScriptType;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
-import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,8 +50,6 @@ public class EsTestServiceImpl implements EsTestService {
     RestHighLevelClient highLevelClient;
     @Autowired
     private SeBdDao seBdDao;
-    @Autowired
-    PersonRepository personRepository;
 
     @Override
     public void testEsRestDeleteApi() {
@@ -218,13 +213,13 @@ public class EsTestServiceImpl implements EsTestService {
     @Override
     public void insertSebdToEs() {
         try {
-            int oneSelect = 10000;
+            int oneSelect = 5000;
             int num = 1;
             PageInfo<SeBd> seBdPageInfo = this.pageSelect(num, oneSelect);
             if (seBdPageInfo.getList().size()> 0) {
                 BulkRequest bulkRequest = new BulkRequest();
                 seBdPageInfo.getList().forEach(x ->
-                        bulkRequest.add(EsRestApiUtil.createIndexRequest(x, ENEsIndex.INDEX_SE_BD.getValue())));
+                        bulkRequest.add(EsRestApiUtil.createSeBdIndexRequest(x, ENEsIndex.INDEX_SE_BD.getValue())));
                // 它还没写完  下一次操作就来了
                 highLevelClient.bulk(bulkRequest, RequestOptions.DEFAULT);
             }
@@ -234,7 +229,7 @@ public class EsTestServiceImpl implements EsTestService {
                 seBdPageInfo = this.pageSelect(i, oneSelect);
                 BulkRequest bulkRequest = new BulkRequest();
                 seBdPageInfo.getList().forEach(x ->
-                        bulkRequest.add(EsRestApiUtil.createIndexRequest(x, ENEsIndex.INDEX_SE_BD.getValue())));
+                        bulkRequest.add(EsRestApiUtil.createSeBdIndexRequest(x, ENEsIndex.INDEX_SE_BD.getValue())));
                 highLevelClient.bulk(bulkRequest, RequestOptions.DEFAULT);
             }
         } catch (Exception e) {
