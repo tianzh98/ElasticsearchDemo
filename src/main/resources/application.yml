@@ -1,6 +1,14 @@
 server:
-  port: 8999
+  port: 8799
 elasticsearch:
+  # 可配置1个或多个，逗号隔开
+  hostAndPorts: 127.0.0.1:9200,127.0.0.1:9201,127.0.0.1:9202
+  # 目前支持配置名称，分片数以及副本数暂时写死的 后续补上
+  # 这个可能不适合配置，因为index一旦多起来 配置文件会很大
   indexName:
     esPerson: es_person
     seBd: se_bd
+database:
+  url: jdbc:mysql://10.60.45.141:3306/GARDPAY_REPORT?characterEncoding=utf8&serverTimezone=Asia/Shanghai
+  userName: root
+  password: mysql

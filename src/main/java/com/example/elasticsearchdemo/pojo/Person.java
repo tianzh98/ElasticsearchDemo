@@ -15,19 +15,19 @@ import java.io.Serializable;
  * @date 2021/07/29
  */
 @Data
-@Document(indexName = "#{@esIndexNameConfig.esPerson}")
+//@Document(indexName = "#{@esIndexNameConfig.esPerson}")
 public class Person extends EsBasePO implements Serializable {
     private static final long serialVersionUID = 1828760928850240542L;
 
-    @Id
+//    @Id
     private String id;
-    @Field(type = FieldType.Keyword)
+//    @Field(type = FieldType.Keyword)
     private String name;
     /**
      * 字段的长度越短，索引和搜索的效率越高,对于年龄 short足以
      */
-    @Field(type = FieldType.Short)
+//    @Field(type = FieldType.Short)
     private Integer age;
-    @Field(type = FieldType.Text)
+//    @Field(type = FieldType.Text)
     private String gender;
 }

@@ -31,7 +31,7 @@ public class ElasticsearchDemoApplication {
 //        esTestService.testEsMSearch();
 //        esTestService.testBoolQuery();
 
-        esTestService.insertSebdToEs();
+//        esTestService.insertSebdToEs();
     }
 
 }

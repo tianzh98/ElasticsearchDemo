@@ -2,6 +2,7 @@ package com.example.elasticsearchdemo.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -16,22 +17,28 @@ import javax.sql.DataSource;
 @Configuration
 public class MySqlTestConfig {
 
+    @Value("${database.url}")
+    private String url;
+    @Value("${database.userName}")
+    private String userName;
+    @Value("${database.password}")
+    private String password;
     @Bean(destroyMethod="close", name = "dataSource")
     public DruidDataSource dataSource(){
         DruidDataSource dataSource = new DruidDataSource ();
-        dataSource.setUrl("jdbc:mysql://10.60.45.141:3306/GARDPAY_REPORT?characterEncoding=utf8&serverTimezone=Asia/Shanghai");
+        dataSource.setUrl(url);
 //        dataSource.setDriverClassName(jdbc_driverClassName);
-        dataSource.setPassword("mysql");
-        dataSource.setUsername("root");
+        dataSource.setPassword(password);
+        dataSource.setUsername(userName);
 //        dataSource.setMinIdle(jdbc_minIdle);
         dataSource.setMaxActive(200);
-        dataSource.setValidationQuery("select user()");
+//        dataSource.setValidationQuery("select user()");
 //        dataSource.setInitialSize(jdbc_initialSize);
 //        dataSource.setMaxWait(jdbc_maxWait);
         return dataSource;
     }
 
-    @Bean // 带参数的bean ,有参数的bean方法。 spring会从ioc中找对应的bean注入，如果ico中没有会报错
+    @Bean
     public SqlSessionFactoryBean sqlSessionFactory(DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sessionFactoryBean = new org.mybatis.spring.SqlSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource);

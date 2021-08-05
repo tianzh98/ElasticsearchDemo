@@ -17,6 +17,8 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 /**
+ * 项目启动时，自动去创建 se_bd 索引
+ *
  * @author tianzh
  * @date 2021/08/04
  */
